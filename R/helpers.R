@@ -44,6 +44,7 @@ pastseasons_helper <- function(player) {
                           "pens_svd", "pens_msd", "yel", "red", "saves", 
                           "bonus", "ea_ppi", "bps", "fin_val", "ssn_pts")
             tmp <- data.frame(x)
+            tmp$fin_val <- tmp$fin_val / 10
             tmp
         })
     }
