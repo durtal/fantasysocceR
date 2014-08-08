@@ -3,6 +3,7 @@
 \name{gameweeks}
 \alias{gameweeks}
 \title{Gameweeks dataset}
+\format{760 rows, 5 columns}
 \description{
 Data about the gameweeks, which team will face which team.  Like
 the \link{players} dataset, this will likely change as/when teams are forced

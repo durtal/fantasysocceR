@@ -27,6 +27,7 @@ NULL
 #' @docType data
 #' @keywords datasets
 #' @name players
+#' @format 554 rows, 7 columns
 #' @details Variables
 #' \itemize{
 #'      \item \strong{pos} player pos
@@ -54,6 +55,7 @@ NULL
 #' @docType data
 #' @keywords datasets
 #' @name pastseasons
+#' @format 1920 rows, 24 columns
 #' @details Variables
 #' \itemize{
 #'      \item \strong{pos} player pos
@@ -93,6 +95,7 @@ NULL
 #' @docType data
 #' @keywords datasets
 #' @name gameweeks
+#' @format 760 rows, 5 columns
 #' @details Variables
 #' \itemize{
 #'      \item \strong{date} fixture data

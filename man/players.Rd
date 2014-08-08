@@ -3,6 +3,7 @@
 \name{players}
 \alias{players}
 \title{Players dataset}
+\format{554 rows, 7 columns}
 \description{
 Summary data about the current players in the game, some
 variables in this dataset will almost immediately be out of date (such as

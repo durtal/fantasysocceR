@@ -3,6 +3,7 @@
 \name{pastseasons}
 \alias{pastseasons}
 \title{Past seasons dataset}
+\format{1920 rows, 24 columns}
 \description{
 Data about the current players in the game and their performance
 in past seasons.  Unlike \link{players} or \link{gameweeks} datasets, the
