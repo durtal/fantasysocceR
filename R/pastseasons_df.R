@@ -35,6 +35,10 @@
 #' @param \strong{player_list} list of players (the list returned by 
 #' \link{collect_ff})
 #' @export
+#' @examples
+#' ## Collect fresh data
+#' player_list <- collect_ff(n = 10)
+#' pastseasons <- pastseasons_df(player_list)
 pastseasons_df <- function(player_list, add_vars = NULL) {
     
     tmp <- ldply(player_list, function(x) {

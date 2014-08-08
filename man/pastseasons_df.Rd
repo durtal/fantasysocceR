@@ -43,4 +43,9 @@ summary data for the current season.  The dataframe returned consists of:
      \item \strong{ssn_pts} total points for the season
 }
 }
+\examples{
+## Collect fresh data
+player_list <- collect_ff(n = 10)
+pastseasons <- pastseasons_df(player_list)
+}
 

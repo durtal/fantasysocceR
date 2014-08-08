@@ -1,4 +1,4 @@
-#' players_df
+#' Construct summary dataframe for current players
 #' 
 #' @description Converts the list returned by \link{collect_ff} into a summary
 #' dataframe with one row for each player.  The default dataframe consists of
@@ -60,6 +60,10 @@
 #' \link{collect_ff})
 #' @param \strong{add_vars} extra variables to add if desired
 #' @export
+#' @examples
+#' #' ## Collect fresh data
+#' player_list <- collect_ff(n = 10)
+#' players <- players_df(player_list)
 players_df <- function(player_list, add_vars = NULL) {
     
     tmp <- ldply(player_list, players_helper, add_vars = add_vars)

@@ -50,3 +50,32 @@ pastseasons_helper <- function(player) {
     
     return(ssn)
 }
+
+#' Helper function
+#' 
+#' @description gameweeks_helper is called by \link{gameweeks_df} to collate
+#' fixture data
+#' 
+#' @export
+gameweeks_helper <- function(player) {
+    
+    options(stringsAsFactors = FALSE)
+    
+    fixtures <- ldply(player$fixtures$all)
+    
+    team <- player$team_name
+    
+    tmpdf <- cbind(team, fixtures)
+    names(tmpdf) <- c("team", "date", "gw", "opp")
+    
+    tmpdf$gw <- as.numeric(str_replace_all(tmpdf$gw, "[[:alpha:]]", ""))
+    
+    tmpdf$home <- ifelse(unlist(
+        str_extract_all(tmpdf$opp, "\\([[:alpha:]]\\)"))=="(H)", TRUE, FALSE)
+    
+    tmpdf$opp <- str_trim(
+        str_replace_all(tmpdf$opp, "\\([[:alpha:]]\\)", ""), side="both")
+    
+    return(tmpdf)
+    
+}
