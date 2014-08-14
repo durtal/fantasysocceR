@@ -35,12 +35,12 @@ pastseasons_helper <- function(player) {
     
     if(length(seasons)==0) {
         ssn <- data.frame(season=NA, mins=NA, goals=NA, assists=NA,
-                          cs=NA, og=NA, ga=NA, pens_svd=NA, pens_msd=NA, yel=NA,
+                          cs=NA, ga=NA, og=NA, pens_svd=NA, pens_msd=NA, yel=NA,
                           red=NA, saves=NA, bonus=NA, ea_ppi=NA, bps=NA, 
                           fin_val=NA, ssn_pts=NA)
     } else {
         ssn <- ldply(seasons, function(x) {
-            names(x) <- c("season", "mins", "goals", "assists", "cs", "og", "ga",
+            names(x) <- c("season", "mins", "goals", "assists", "cs", "ga", "og",
                           "pens_svd", "pens_msd", "yel", "red", "saves", 
                           "bonus", "ea_ppi", "bps", "fin_val", "ssn_pts")
             tmp <- data.frame(x)

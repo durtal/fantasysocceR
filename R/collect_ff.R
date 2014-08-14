@@ -20,8 +20,9 @@
 #' @param \strong{n} number of players (default = 600)
 #' @param \strong{specify_ids} numeric vector, collect data for specific players
 #' using their id
+#' @param \strong{.progress} progress bar - "text", "time", "tk", or "win"
 #' @export
-collect_ff <- function(n = 600, specify_ids = NULL) {
+collect_ff <- function(n = 600, specify_ids = NULL, .progress = "none") {
     
     if(!is.null(specify_ids)) {
         ids <- specify_ids
@@ -37,7 +38,7 @@ collect_ff <- function(n = 600, specify_ids = NULL) {
         } else {
             tmp <- NULL
         }
-    })
+    }, .progress = .progress)
     
     player_list <- player_list[!sapply(player_list, is.null)]
     
