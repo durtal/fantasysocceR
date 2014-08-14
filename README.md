@@ -1,7 +1,9 @@
 fantasysocceR
 =============
 
-R package with datasets and functions for the fantasy football game [fantasy.premierleague.com](http://fantasy.premierleague.com/)
+R package with datasets and functions for the fantasy football game [fantasy.premierleague.com](http://fantasy.premierleague.com/).
+
+Here is a short blog post [introducing the package](http://durtal.github.io/blog/r-package-fantasysocceR.html)
 
 #### Installation
 Within R
