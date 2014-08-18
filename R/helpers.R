@@ -80,3 +80,28 @@ gameweeks_helper <- function(player) {
     return(tmpdf)
     
 }
+
+#' Helper function
+#' 
+#' @description currentseason_helper is called by \link{currentseason_df} to
+#' collate data for the current season
+#' 
+#' @export
+currentseason_helper <- function(player) {
+    
+    options(stringsAsFactors = FALSE)
+    
+    season <- player$fixture_history$all
+    
+    ssn <- ldply(season, function(x) {
+        names(x) <- c("date", "gw", "opp", "mins", "goals", "assists", "cs",
+                      "ga", "og", "pens_svd", "pens_msd", "yel", "red", "saves",
+                      "bonus", "ea_ppi", "bps", "net_transfers", "gw_val", 
+                      "gw_pts")
+        tmp <- data.frame(x)
+        tmp$gw_val <- tmp$gw_val / 10
+        tmp
+    })
+    
+    return(ssn)
+}
