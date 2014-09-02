@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+<title>pastseasons</title>
+
+<script src="libs/jquery-1.11.0/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="libs/bootstrap-2.3.2/css/united.min.css" rel="stylesheet" />
+<link href="libs/bootstrap-2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+
+<style type="text/css">
+
+/* padding for bootstrap navbar */
+body {
+  padding-top: 50px;
+  padding-bottom: 40px;
+}
+@media (max-width: 979px) {
+  body {
+    padding-top: 0;
+  }
+}
+
+/* offset scroll position for anchor links (for fixed navbar)  */
+@media (min-width: 980px) {
+  .section h2 {
+    padding-top: 52px;
+    margin-top: -52px;
+  }
+  .section h3 {
+    padding-top: 52px;
+    margin-top: -52px;
+  }
+}
+
+p{
+  font-size: 13px;
+}
+/* don't use link color in navbar */
+.dropdown-menu>li>a {
+  color: black;
+}
+
+/* some padding for disqus */
+#disqus_thread {
+  margin-top: 45px;
+}
+
+</style>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #303030; color: #cccccc; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #cccccc; background-color: #303030; }
+code > span.kw { color: #f0dfaf; }
+code > span.dt { color: #dfdfbf; }
+code > span.dv { color: #dcdccc; }
+code > span.bn { color: #dca3a3; }
+code > span.fl { color: #c0bed1; }
+code > span.ch { color: #dca3a3; }
+code > span.st { color: #cc9393; }
+code > span.co { color: #7f9f7f; }
+code > span.ot { color: #efef8f; }
+code > span.al { color: #ffcfaf; }
+code > span.fu { color: #efef8f; }
+code > span.er { color: #c3bf9f; }
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+<div class="container-fluid main-container">
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button class="btn btn-navbar" type="button" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://durtal.github.io" class="brand">return to RcappeR</a>
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li><a href="index.html">fantasysocceR Home</a></li>
+                    <li class="dropdown">
+                        <a href="datasets" class="dropdown-toggle" data-toggle="dropdown">
+                            Datasets <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="players.html">players</a></li>
+                            <li><a href="pastseasons.html">pastseasons</a></li>
+                            <li><a href="gameweeks.html">gameweeks</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="functions" class="dropdown-toggle" data-toggle="dropdown">
+                            Functions <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="using_functions.html">Using functions</a></li>
+                            <li class="nav-header">Function Help</li>
+                            <li><a href="collect_ff.html">collect_ff</a></li>
+                            <li><a href="players_df.html">players_df</a></li>
+                            <li><a href="pastseasons_df.html">pastseasons_df</a></li>
+                            <li><a href="gameweeks_df.html">gameweeks.df</a></li>
+                            <li><a href="currentseason_df.html">currentseason_df</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="header">
+<h1 class="title">pastseasons</h1>
+</div>
+
+
+<p>The <strong>pastseasons</strong> dataset contains performance data for past seasons for all current players in the <a href="http://fantasy.premierleague.com">fantasy.premierleague.com</a> game. Not all players in the game have past data, such as Alexis Sanchez, these players are still included in the dataset but their performance data is recorded as NA</p>
+<p>Once the package has been loaded, to access the dataset:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(pastseasons)</code></pre>
+<p>The dataframe has dimensions 1936 rows and 24 columns.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(pastseasons)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    1936 obs. of  24 variables:
+##  $ pos     : chr  &quot;Goalkeeper&quot; &quot;Goalkeeper&quot; &quot;Goalkeeper&quot; &quot;Goalkeeper&quot; ...
+##  $ team    : chr  &quot;Arsenal&quot; &quot;Arsenal&quot; &quot;Arsenal&quot; &quot;Arsenal&quot; ...
+##  $ pts     : num  157 157 157 157 157 157 155 155 155 155 ...
+##  $ id      : num  1 1 1 1 1 1 2 2 2 2 ...
+##  $ name    : chr  &quot;Szczesny&quot; &quot;Szczesny&quot; &quot;Szczesny&quot; &quot;Szczesny&quot; ...
+##  $ value   : num  5.5 5.5 5.5 5.5 5.5 5.5 6 6 6 6 ...
+##  $ pct     : num  12.3 12.3 12.3 12.3 12.3 12.3 11.2 11.2 11.2 11.2 ...
+##  $ season  : chr  &quot;2008/09&quot; &quot;2009/10&quot; &quot;2010/11&quot; &quot;2011/12&quot; ...
+##  $ mins    : num  0 0 1350 3420 2250 ...
+##  $ goals   : num  0 0 0 0 0 0 2 2 2 2 ...
+##  $ assists : num  0 0 0 0 0 0 0 1 1 0 ...
+##  $ cs      : num  0 0 6 13 10 16 9 11 7 17 ...
+##  $ ga      : num  0 0 19 49 24 41 36 42 19 26 ...
+##  $ og      : num  0 0 0 0 0 0 0 2 0 0 ...
+##  $ pens_svd: num  0 0 1 1 1 1 0 0 0 0 ...
+##  $ pens_msd: num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ yel     : num  0 0 1 2 1 2 5 8 1 1 ...
+##  $ red     : num  0 0 0 0 0 0 2 0 1 1 ...
+##  $ saves   : num  0 0 45 82 71 113 0 0 0 0 ...
+##  $ bonus   : num  0 0 0 8 3 4 0 5 11 24 ...
+##  $ ea_ppi  : num  0 0 0 469 314 475 0 436 285 463 ...
+##  $ bps     : num  0 0 0 0 0 194 0 0 0 228 ...
+##  $ fin_val : num  4.5 4.5 4.3 5.9 5.3 5.9 5.9 5.8 5.3 5.6 ...
+##  $ ssn_pts : num  0 0 62 139 102 157 85 103 88 155 ...</code></pre>
+<p>The <strong>pastseasons</strong> dataset could potentially be used to build a model to predict performance for the coming season, but unfortunately the dataset doesn’t include the pre-season data for each of those seasons. For example, Shay Given has previously played for Newcastle and Manchester City, but only his current club (Aston Villa) is recorded in the dataset.</p>
+<p>A model based on the points a players scored in previous season is unfortunately not that great. I reduce the dataset so it only includes data for 2010/11, 2011/12, 2012/13 and 2013/14, and reduce the number of variables.</p>
+<pre class="sourceCode r"><code class="sourceCode r">tmp &lt;-<span class="st"> </span><span class="kw">subset</span>(pastseasons, season ==<span class="st"> &quot;2010/11&quot;</span> |<span class="st"> </span>season ==<span class="st"> &quot;2011/12&quot;</span> |<span class="st"> </span>season ==<span class="st"> &quot;2012/13&quot;</span> |<span class="st"> </span>season ==<span class="st"> &quot;2013/14&quot;</span>,
+              <span class="dt">select =</span> <span class="kw">c</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;id&quot;</span>, <span class="st">&quot;pos&quot;</span>, <span class="st">&quot;team&quot;</span>, <span class="st">&quot;pct&quot;</span>, <span class="st">&quot;value&quot;</span>, <span class="st">&quot;season&quot;</span>, <span class="st">&quot;fin_val&quot;</span>, <span class="st">&quot;ssn_pts&quot;</span>))
+<span class="kw">dim</span>(tmp)</code></pre>
+<pre><code>## [1] 1288    9</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># we need the reshape2 package, to create a &#39;long&#39; dataframe, with one player per row</span>
+<span class="kw">library</span>(reshape2)
+ssn2ssn &lt;-<span class="st"> </span><span class="kw">dcast</span>(tmp, name +<span class="st"> </span>id +<span class="st"> </span>pos +<span class="st"> </span>team +<span class="st"> </span>pct +<span class="st"> </span>value ~<span class="st"> </span>season, <span class="dt">value.var =</span> <span class="st">&quot;ssn_pts&quot;</span>)
+<span class="kw">head</span>(ssn2ssn)    </code></pre>
+<pre><code>##          name id        pos     team  pct value 2010/11 2011/12 2012/13
+## 1    Szczesny  1 Goalkeeper  Arsenal 12.3   5.5      62     139     102
+## 2   Koscielny  2   Defender  Arsenal 11.2   6.0      85     103      88
+## 3   Vermaelen  3   Defender  Arsenal  0.5   5.0      15     132      70
+## 4       Gibbs  4   Defender  Arsenal  3.7   5.5       7      61      93
+## 5   Jenkinson  5   Defender West Ham  0.2   5.0      NA      12      51
+## 6 Mertesacker  6   Defender  Arsenal  7.2   6.0      NA      59     135
+##   2013/14
+## 1     157
+## 2     155
+## 3      29
+## 4      89
+## 5      50
+## 6     157</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># rename the variables with numbers in them (just for ease of typing later)</span>
+<span class="kw">names</span>(ssn2ssn)[<span class="dv">7</span>:<span class="dv">10</span>] &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;s&quot;</span>, <span class="dv">1</span>:<span class="dv">4</span>)
+
+<span class="co"># now plot season to season points</span>
+<span class="kw">ggplot</span>(ssn2ssn, <span class="kw">aes</span>(<span class="dt">x =</span> s1, <span class="dt">y =</span> s2)) +
+<span class="st">    </span><span class="kw">geom_point</span>() +
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> s2, <span class="dt">y =</span> s3)) +
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> s3, <span class="dt">y =</span> s4)) +
+<span class="st">    </span><span class="kw">theme_minimal</span>() +
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Season 1&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Season 2&quot;</span>) +
+<span class="st">    </span><span class="kw">facet_wrap</span>(~pos)</code></pre>
+<p><img src="pastseasons_files/figure-html/unnamed-chunk-4.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="672" style="display: block; margin: auto;" /></p>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+
+</body>
+</html>

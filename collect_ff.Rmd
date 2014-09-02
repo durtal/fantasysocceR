@@ -1,0 +1,35 @@
+---
+title: "collect_ff"
+---
+
+#### Description
+
+The `collect_ff` function collects fresh data from [fantasy.premierleague.com](http://fantasy.premierleague.com), it will take a while to complete and is to be used sparingly
+
+#### Usage
+```{r, eval=FALSE}
+collect_ff(n = 600, specify_ids = NULL, .progress = "none")
+```
+
+#### Arguments
+
+param | details
+------|--------
+n | the number of players (default = 600)
+specify_ids | numeric vector, enter ids to collect data for specific players
+.progress | progress bar (from plyr), options inc. "text", "time", "tk" or "win"
+
+#### Details
+
+Users can specify the number of players they wish to collect data for by changing the n parameter. If n is greater than the number of players, the function will only return the number of players available, however it will attempt to find n players, so do not input large n. The number of players in the game is around 550, the default value of n is 600.
+
+Alternatively, passing a numeric vector to the specify_ids parameter, it is possible to collect data for specific players (I am unsure if ids change during the season). This function takes some time to run, and returns a list which can then be turned into dataframes using other functions in the package, see [players_df](players_df.html), [pastseasons_df](pastseasons_df.html).
+
+#### Example use
+```{r, eval=FALSE}
+# collect players with ids 1 thru 50
+new_list <- collect_ff(n = 50)
+
+# collect players with ids 500 thru 550
+new_list <- collect_ff(specify_ids = 500:550)
+```

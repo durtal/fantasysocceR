@@ -1,0 +1,46 @@
+---
+title: "pastseasons"
+---
+
+The **pastseasons** dataset contains performance data for past seasons for all current players in the [fantasy.premierleague.com](http://fantasy.premierleague.com) game.  Not all players in the game have past data, such as Alexis Sanchez, these players are still included in the dataset but their performance data is recorded as `r NA`
+
+Once the package has been loaded, to access the dataset:
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(fantasysocceR)
+library(ggplot2)
+```
+
+```{r}
+data(pastseasons)
+```
+
+The dataframe has dimensions `r dim(pastseasons)[1]` rows and `r dim(pastseasons)[2]` columns.
+```{r}
+str(pastseasons)
+```
+
+The **pastseasons** dataset could potentially be used to build a model to predict performance for the coming season, but unfortunately the dataset doesn't include the pre-season data for each of those seasons.  For example, Shay Given has previously played for Newcastle and Manchester City, but only his current club (Aston Villa) is recorded in the dataset.
+
+A model based on the points a players scored in previous season is unfortunately not that great.  I reduce the dataset so it only includes data for 2010/11, 2011/12, 2012/13 and 2013/14, and reduce the number of variables.
+
+```{r, fig.align='center', warning=FALSE}
+tmp <- subset(pastseasons, season == "2010/11" | season == "2011/12" | season == "2012/13" | season == "2013/14",
+              select = c("name", "id", "pos", "team", "pct", "value", "season", "fin_val", "ssn_pts"))
+dim(tmp)
+# we need the reshape2 package, to create a 'long' dataframe, with one player per row
+library(reshape2)
+ssn2ssn <- dcast(tmp, name + id + pos + team + pct + value ~ season, value.var = "ssn_pts")
+head(ssn2ssn)    
+
+# rename the variables with numbers in them (just for ease of typing later)
+names(ssn2ssn)[7:10] <- paste0("s", 1:4)
+
+# now plot season to season points
+ggplot(ssn2ssn, aes(x = s1, y = s2)) +
+    geom_point() +
+    geom_point(aes(x = s2, y = s3)) +
+    geom_point(aes(x = s3, y = s4)) +
+    theme_minimal() +
+    labs(x = "Season 1", y = "Season 2") +
+    facet_wrap(~pos)
+```

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+<title>Using functions</title>
+
+<script src="libs/jquery-1.11.0/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="libs/bootstrap-2.3.2/css/united.min.css" rel="stylesheet" />
+<link href="libs/bootstrap-2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+
+<style type="text/css">
+
+/* padding for bootstrap navbar */
+body {
+  padding-top: 50px;
+  padding-bottom: 40px;
+}
+@media (max-width: 979px) {
+  body {
+    padding-top: 0;
+  }
+}
+
+/* offset scroll position for anchor links (for fixed navbar)  */
+@media (min-width: 980px) {
+  .section h2 {
+    padding-top: 52px;
+    margin-top: -52px;
+  }
+  .section h3 {
+    padding-top: 52px;
+    margin-top: -52px;
+  }
+}
+
+p{
+  font-size: 13px;
+}
+/* don't use link color in navbar */
+.dropdown-menu>li>a {
+  color: black;
+}
+
+/* some padding for disqus */
+#disqus_thread {
+  margin-top: 45px;
+}
+
+</style>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #303030; color: #cccccc; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #cccccc; background-color: #303030; }
+code > span.kw { color: #f0dfaf; }
+code > span.dt { color: #dfdfbf; }
+code > span.dv { color: #dcdccc; }
+code > span.bn { color: #dca3a3; }
+code > span.fl { color: #c0bed1; }
+code > span.ch { color: #dca3a3; }
+code > span.st { color: #cc9393; }
+code > span.co { color: #7f9f7f; }
+code > span.ot { color: #efef8f; }
+code > span.al { color: #ffcfaf; }
+code > span.fu { color: #efef8f; }
+code > span.er { color: #c3bf9f; }
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+<div class="container-fluid main-container">
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button class="btn btn-navbar" type="button" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://durtal.github.io" class="brand">return to RcappeR</a>
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li><a href="index.html">fantasysocceR Home</a></li>
+                    <li class="dropdown">
+                        <a href="datasets" class="dropdown-toggle" data-toggle="dropdown">
+                            Datasets <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="players.html">players</a></li>
+                            <li><a href="pastseasons.html">pastseasons</a></li>
+                            <li><a href="gameweeks.html">gameweeks</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="functions" class="dropdown-toggle" data-toggle="dropdown">
+                            Functions <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="using_functions.html">Using functions</a></li>
+                            <li class="nav-header">Function Help</li>
+                            <li><a href="collect_ff.html">collect_ff</a></li>
+                            <li><a href="players_df.html">players_df</a></li>
+                            <li><a href="pastseasons_df.html">pastseasons_df</a></li>
+                            <li><a href="gameweeks_df.html">gameweeks.df</a></li>
+                            <li><a href="currentseason_df.html">currentseason_df</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="header">
+<h1 class="title">Using functions</h1>
+</div>
+
+
+<p>The stable datasets in the package will become out of date as and when users interact with <a href="http://fantasy.premierleague.com">fantasy.premierleague.com</a>, they became out of date almost immediately after the package was created (<em>sigh</em>). The function <code>collect_ff</code> allows for up-to-date data to be collected by accessing the ‘official’ API, the function should be used sparingly. (This post was written 2014-09-02 23:30:20)</p>
+<div id="fresh-data" class="section level3">
+<h3>Fresh Data</h3>
+<p>The <code>collect_ff</code> function needn’t take any arguments, by default it will attempt to collect data for 600 players, this is time-consuming so I won’t do that in this post, instead I will collect just 50 players. The .progress argument is from the <a href="https://github.com/hadley/plyr">plyr</a> package and will tell the user roughly how much longer it will take to complete the collecting (“text” or “time” are most useful imo)</p>
+<pre class="sourceCode r"><code class="sourceCode r">new_data &lt;-<span class="st"> </span><span class="kw">collect_ff</span>(<span class="dt">n =</span> <span class="dv">50</span>)</code></pre>
+<p>A new list of length 50, each list element is one player and contains the following data:</p>
+<p><em>photo, web_name, event_explain, fixture_history, season_history, fixtures, event_total, type_name, team_name, selected_by, total_points, current_fixture, next_fixture, team_code, news, team_id, id, status, code, first_name, second_name, now_cost, chance_of_playing_this_round, chance_of_playing_next_round, value_form, value_season, cost_change_start, cost_change_event, cost_change_start_fall, cost_change_event_fall, in_dreamteam, dreamteam_count, selected_by_percent, form, transfers_out, transfers_in, transfers_out_event, transfers_in_event, event_points, points_per_game, ep_this, ep_next, special, minutes, goals_scored, assists, clean_sheets, goals_conceded, own_goals, penalties_saved, penalties_missed, yellow_cards, red_cards, saves, bonus, ea_index, bps, element_type, team</em></p>
+<p>Not all of the data for each player is particularly valuable, such as photo. However we can extract the data found in the <a href="players.html"><strong>players</strong></a>, <a href="pastseasons.html"><strong>pastseasons</strong></a> and <a href="gameweeks.html"><strong>gameweeks</strong></a> datasets. The code below shows how:</p>
+<pre class="sourceCode r"><code class="sourceCode r">new_players_df &lt;-<span class="st"> </span><span class="kw">players_df</span>(new_data)
+<span class="kw">dim</span>(new_players_df)</code></pre>
+<pre><code>## [1] 50  7</code></pre>
+<p>The pastseasons dataset won’t change much, however that dataset also contains data about the current players such as value, team and percentage of teams the player is selected in.</p>
+<pre class="sourceCode r"><code class="sourceCode r">new_pastseasons_df &lt;-<span class="st"> </span><span class="kw">pastseasons_df</span>(new_data)
+<span class="kw">dim</span>(new_pastseasons_df)</code></pre>
+<pre><code>## [1] 182  24</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># to get an up-to-date gameweeks dataset it requires a player from each of the 20 teams to have been collected, you can do this by finding the ids of one player at each club and collect that data, or collect every player in the game</span>
+new_gameweeks_df &lt;-<span class="st"> </span><span class="kw">gameweeks_df</span>(new_data)</code></pre>
+<p>There is one function, <code>currentseason_df</code>, that may be more interesting, it creates a dataframe, similar to that of pastseasons, but it records the performance of every player in every gameweek so far in the current season. So unsurprisingly it has 150 rows as there has been 3 gameweeks thus far, 3*50 = 150.</p>
+<pre class="sourceCode r"><code class="sourceCode r">currentseason &lt;-<span class="st"> </span><span class="kw">currentseason_df</span>(new_data)
+<span class="kw">str</span>(currentseason)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    150 obs. of  27 variables:
+##  $ pos          : chr  &quot;Szczesny&quot; &quot;Szczesny&quot; &quot;Szczesny&quot; &quot;Koscielny&quot; ...
+##  $ team         : chr  &quot;Goalkeeper&quot; &quot;Goalkeeper&quot; &quot;Goalkeeper&quot; &quot;Defender&quot; ...
+##  $ pts          : chr  &quot;Arsenal&quot; &quot;Arsenal&quot; &quot;Arsenal&quot; &quot;Arsenal&quot; ...
+##  $ id           : num  4 4 4 11 11 11 0 0 0 1 ...
+##  $ name         : num  1 1 1 2 2 2 3 3 3 4 ...
+##  $ value        : num  5.5 5.5 5.5 6.1 6.1 6.1 5 5 5 5.3 ...
+##  $ pct          : num  11 11 11 13 13 13 0.2 0.2 0.2 1.6 ...
+##  $ date         : chr  &quot;16 Aug 17:30&quot; &quot;23 Aug 17:30&quot; &quot;31 Aug 16:00&quot; &quot;16 Aug 17:30&quot; ...
+##  $ gw           : num  1 2 3 1 2 3 1 2 3 1 ...
+##  $ opp          : chr  &quot;CRY(H) 2-1&quot; &quot;EVE(A) 2-2&quot; &quot;LEI(A) 1-1&quot; &quot;CRY(H) 2-1&quot; ...
+##  $ mins         : num  90 90 90 90 0 25 0 0 0 52 ...
+##  $ goals        : num  0 0 0 1 0 0 0 0 0 0 ...
+##  $ assists      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ cs           : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ ga           : num  1 2 1 1 0 1 0 0 0 1 ...
+##  $ og           : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ pens_svd     : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ pens_msd     : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ yel          : num  0 0 1 0 0 0 0 0 0 0 ...
+##  $ red          : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ saves        : num  1 0 2 0 0 0 0 0 0 0 ...
+##  $ bonus        : num  0 0 0 2 0 0 0 0 0 0 ...
+##  $ ea_ppi       : num  13 5 7 38 0 2 0 0 0 8 ...
+##  $ bps          : num  7 9 15 33 0 3 0 0 0 10 ...
+##  $ net_transfers: num  0 -9306 -20971 0 75721 ...
+##  $ gw_val       : num  5.5 5.5 5.5 6 6.1 6.1 5 5 5 5.5 ...
+##  $ gw_pts       : num  2 1 1 10 0 1 0 0 0 1 ...</code></pre>
+</div>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+
+</body>
+</html>

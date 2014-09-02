@@ -1,0 +1,45 @@
+---
+title: "Using functions"
+---
+
+The stable datasets in the package will become out of date as and when users interact with [fantasy.premierleague.com](http://fantasy.premierleague.com), they became out of date almost immediately after the package was created (_sigh_).  The function `collect_ff` allows for up-to-date data to be collected by accessing the 'official' API, the function should be used sparingly.  (This post was written `r Sys.time()`)
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(fantasysocceR)
+library(ggplot2)
+```
+
+### Fresh Data
+
+The `collect_ff` function needn't take any arguments, by default it will attempt to collect data for 600 players, this is time-consuming so I won't do that in this post, instead I will collect just 50 players.  The .progress argument is from the [plyr](https://github.com/hadley/plyr) package and will tell the user roughly how much longer it will take to complete the collecting ("text" or "time" are most useful imo)
+
+```{r, cache=TRUE}
+new_data <- collect_ff(n = 50)
+```
+
+A new list of length `r length(new_data)`, each list element is one player and contains the following data:
+
+_`r names(new_data[[1]])`_
+
+Not all of the data for each player is particularly valuable, such as photo.  However we can extract the data found in the [**players**](players.html), [**pastseasons**](pastseasons.html) and [**gameweeks**](gameweeks.html) datasets.  The code below shows how:
+
+```{r}
+new_players_df <- players_df(new_data)
+dim(new_players_df)
+```
+
+The pastseasons dataset won't change much, however that dataset also contains data about the current players such as value, team and percentage of teams the player is selected in.
+```{r}
+new_pastseasons_df <- pastseasons_df(new_data)
+dim(new_pastseasons_df)
+
+# to get an up-to-date gameweeks dataset it requires a player from each of the 20 teams to have been collected, you can do this by finding the ids of one player at each club and collect that data, or collect every player in the game
+new_gameweeks_df <- gameweeks_df(new_data)
+```
+
+There is one function, `currentseason_df`, that may be more interesting, it creates a dataframe, similar to that of pastseasons, but it records the performance of every player in every gameweek so far in the current season.  So unsurprisingly it has 150 rows as there has been 3 gameweeks thus far, 3*50 = 150.
+
+```{r}
+currentseason <- currentseason_df(new_data)
+str(currentseason)
+```

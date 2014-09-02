@@ -1,0 +1,27 @@
+---
+title: "gameweeks_df"
+---
+
+#### Description
+
+The `gameweeks_df` function converts the data found in the list returned by the [collect_ff](collect_ff.html) function when getting fresh data.  To return the gameweeks for each of the 20 clubs, at least one player from each club needs to be collected with the [collect_ff](collect_ff.html) function, either specify the ids of 20 players you know from each club, or more the more time consuming way is to collect data for all players.
+
+#### Usage
+```{r, eval=FALSE}
+gameweeks_df(player_list)
+```
+
+#### Arguments
+
+param | details
+------|--------
+player_list | the list of players returned by [collect_ff](collect_ff.html)
+
+#### Example use
+```{r, eval=FALSE}
+# convert list into dataframe
+new_players_df <- players_df(player_list = player_list)
+
+# convert list into dataframe and add a couple of variables, points per game
+new_players_df <- players_df(player_list = player_list, add_vars = c("points_per_game"))
+```

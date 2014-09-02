@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+<title>gameweeks_df</title>
+
+<script src="libs/jquery-1.11.0/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="libs/bootstrap-2.3.2/css/united.min.css" rel="stylesheet" />
+<link href="libs/bootstrap-2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+
+<style type="text/css">
+
+/* padding for bootstrap navbar */
+body {
+  padding-top: 50px;
+  padding-bottom: 40px;
+}
+@media (max-width: 979px) {
+  body {
+    padding-top: 0;
+  }
+}
+
+/* offset scroll position for anchor links (for fixed navbar)  */
+@media (min-width: 980px) {
+  .section h2 {
+    padding-top: 52px;
+    margin-top: -52px;
+  }
+  .section h3 {
+    padding-top: 52px;
+    margin-top: -52px;
+  }
+}
+
+p{
+  font-size: 13px;
+}
+/* don't use link color in navbar */
+.dropdown-menu>li>a {
+  color: black;
+}
+
+/* some padding for disqus */
+#disqus_thread {
+  margin-top: 45px;
+}
+
+</style>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #303030; color: #cccccc; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #cccccc; background-color: #303030; }
+code > span.kw { color: #f0dfaf; }
+code > span.dt { color: #dfdfbf; }
+code > span.dv { color: #dcdccc; }
+code > span.bn { color: #dca3a3; }
+code > span.fl { color: #c0bed1; }
+code > span.ch { color: #dca3a3; }
+code > span.st { color: #cc9393; }
+code > span.co { color: #7f9f7f; }
+code > span.ot { color: #efef8f; }
+code > span.al { color: #ffcfaf; }
+code > span.fu { color: #efef8f; }
+code > span.er { color: #c3bf9f; }
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+<div class="container-fluid main-container">
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button class="btn btn-navbar" type="button" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://durtal.github.io" class="brand">return to RcappeR</a>
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li><a href="index.html">fantasysocceR Home</a></li>
+                    <li class="dropdown">
+                        <a href="datasets" class="dropdown-toggle" data-toggle="dropdown">
+                            Datasets <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="players.html">players</a></li>
+                            <li><a href="pastseasons.html">pastseasons</a></li>
+                            <li><a href="gameweeks.html">gameweeks</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="functions" class="dropdown-toggle" data-toggle="dropdown">
+                            Functions <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="using_functions.html">Using functions</a></li>
+                            <li class="nav-header">Function Help</li>
+                            <li><a href="collect_ff.html">collect_ff</a></li>
+                            <li><a href="players_df.html">players_df</a></li>
+                            <li><a href="pastseasons_df.html">pastseasons_df</a></li>
+                            <li><a href="gameweeks_df.html">gameweeks.df</a></li>
+                            <li><a href="currentseason_df.html">currentseason_df</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="header">
+<h1 class="title">gameweeks_df</h1>
+</div>
+
+
+<div id="description" class="section level4">
+<h4>Description</h4>
+<p>The <code>gameweeks_df</code> function converts the data found in the list returned by the <a href="collect_ff.html">collect_ff</a> function when getting fresh data. To return the gameweeks for each of the 20 clubs, at least one player from each club needs to be collected with the <a href="collect_ff.html">collect_ff</a> function, either specify the ids of 20 players you know from each club, or more the more time consuming way is to collect data for all players.</p>
+</div>
+<div id="usage" class="section level4">
+<h4>Usage</h4>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">gameweeks_df</span>(player_list)</code></pre>
+</div>
+<div id="arguments" class="section level4">
+<h4>Arguments</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left">param</th>
+<th align="left">details</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">player_list</td>
+<td align="left">the list of players returned by <a href="collect_ff.html">collect_ff</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="example-use" class="section level4">
+<h4>Example use</h4>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># convert list into dataframe</span>
+new_players_df &lt;-<span class="st"> </span><span class="kw">players_df</span>(<span class="dt">player_list =</span> player_list)
+
+<span class="co"># convert list into dataframe and add a couple of variables, points per game</span>
+new_players_df &lt;-<span class="st"> </span><span class="kw">players_df</span>(<span class="dt">player_list =</span> player_list, <span class="dt">add_vars =</span> <span class="kw">c</span>(<span class="st">&quot;points_per_game&quot;</span>))</code></pre>
+</div>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+
+</body>
+</html>

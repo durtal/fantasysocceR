@@ -1,0 +1,28 @@
+---
+title: "pastseasons_df"
+---
+
+#### Description
+
+The `pastseasons_df` function converts the data found in the list returned by the [collect_ff](collect_ff.html) function when getting fresh data.  The default dataframe returns in the same format as the [pastseasons](pastseasons.html) dataset.
+
+#### Usage
+```{r, eval=FALSE}
+pastseasons_df(player_list, add_vars = NULL)
+```
+
+#### Arguments
+
+param | details
+------|--------
+player_list | the list of players returned by [collect_ff](collect_ff.html)
+add_vars | extra variables to add if desired
+
+#### Example use
+```{r, eval=FALSE}
+# convert list into dataframe
+new_players_df <- players_df(player_list = player_list)
+
+# convert list into dataframe and add a couple of variables, points per game
+new_players_df <- players_df(player_list = player_list, add_vars = c("points_per_game"))
+```

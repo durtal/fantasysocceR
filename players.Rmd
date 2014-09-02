@@ -1,0 +1,34 @@
+---
+title: "players"
+---
+
+The **players** dataset contains summary data for individual players in the [fantasy.premierleague.com](http://fantasy.premierleague.com) game, the dataset was updated the day before the 2014/15 seasons started so there will be some changes due to players joining and leaving the game.
+
+Once the package has been loaded, to access the dataset:
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(fantasysocceR)
+library(ggplot2)
+```
+
+```{r}
+data(players)
+```
+
+The dataframe has dimensions `r dim(players)[1]` rows and `r dim(players)[2]` columns.
+```{r}
+str(players)
+```
+
+There are 7 variables, the players position ('pos'), their team, points scored last season ('pts'), id number, name, value (when the package was created), and the percentage of teams the player is selected in ('pct')
+
+A simple plot of this data to show the number of players in each position at each of the 20 clubs.  We can also use the `team_pal()` function included in the package.
+```{r, fig.align='center', fig.height=8, fig.width=10}
+players$pos <- factor(players$pos, levels = c("Goalkeeper", "Defender", 
+                                              "Midfielder", "Forward"))
+ggplot(players, aes(x=pos, fill=team)) +
+    geom_bar() +
+    theme_bw() +
+    scale_fill_manual(values = team_pal()) +
+    facet_wrap(~team)
+```
+

@@ -1,0 +1,20 @@
+---
+title: "fantasysocceR"
+---
+
+Here you will find details about the R package **fantasysocceR**, which contains datasets and functions for playing and interacting with the official fantasy football game ([fantasy.premierleague.com](http://fantasy.premierleague.com)).  The package is hosted on github, you can find it [here](https://github.com/durtal/fantasysocceR), there is also a short post introducing the package [here](http://durtal.github.io/blog/r-package-fantasysocceR.html).
+
+To install and load the package (devtools must be installed first): 
+
+```{r, eval=FALSE}
+# install.packages("devtools")
+devtools::install_github(repo = "fantasysocceR", user = "durtal")
+```
+
+### Datasets
+There are 3 stable datasets that come with the package, these datasets were collected the day before the 2014/15 Premier League season started (data will have changed since that collection).  The datasets are:
+[**players**](players.html)
+[**pastseasons**](pastseasons.html)
+[**gameweeks**](gameweeks.html)
+
+There is a function to enable collection of up-to-date fantasy football data, this function is [**collect_ff**](collect_ff.html), which returns a list, this list can then be passed to 1 of 4 functions which will turn the list into dataframes similar to the 3 stable dataframes.  These functions are: [**players_df**](players_df.html), [**pastseasons_df**](pastseasons_df.html), [**gameweeks_df**](gameweeks_df.html), and [**currentseasons_df**](currentseasons_df.html), to see these functions in action see [here](using_functions.html)
