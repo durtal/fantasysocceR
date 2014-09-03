@@ -16,7 +16,13 @@ players_helper <- function(player, add_vars = NULL) {
     
     tmp <- data.frame(player[names(player) %in% default_df])
     
-    names(tmp)[1:7] <- c("pos", "team", "pts", "id", "name", "value", "pct")
+    names(tmp)[grep("web_name", names(tmp))] <- "name"
+    names(tmp)[grep("type_name", names(tmp))] <- "pos"
+    names(tmp)[grep("team_name", names(tmp))] <- "team"
+    names(tmp)[grep("now_cost", names(tmp))] <- "value"
+    names(tmp)[grep("selected_by_percent", names(tmp))] <- "pct"
+    names(tmp)[grep("total_points", names(tmp))] <- "pts"
+    
     tmp$value <- tmp$value / 10
     tmp$pct <- as.numeric(tmp$pct)
     

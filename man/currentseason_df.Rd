@@ -34,7 +34,7 @@ summary data for the current season.  The dataframe returned consists of:
      \item \strong{goals} goals scored
      \item \strong{assists} assists
      \item \strong{cs} clean sheet
-     \item \strong{gc} goals conceded
+     \item \strong{ga} goals against
      \item \strong{og} own goals
      \item \strong{pens_svd} penalties saved
      \item \strong{pens_msd} penalties missed
