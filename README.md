@@ -3,7 +3,7 @@ fantasysocceR (0.2.0)
 
 R package with datasets and functions for the fantasy football game [fantasy.premierleague.com](http://fantasy.premierleague.com/).
 
-Here is a short blog post [introducing the package](http://durtal.github.io/blog/r-package-fantasysocceR.html)
+Here is a short blog post [introducing the package](http://durtal.github.io/blog/r-package-fantasysocceR.html).  Help pages can be found [here](http://durtal.github.io/fantasysocceR/)
 
 #### Updates (0.2.0)
 New function `currentseason_df` will convert the list returned by ` collect_ff ` into a dataframe consisting of players performance per gameweek.
@@ -45,4 +45,8 @@ new_pastseasons <- pastseasons_df(player_list)
 or gameweeks
 ```R
 new_gameweeks <- gameweeks_df(player_list)
+```
+or current season data
+```R
+currentseason <- currentseason_df(player_list)
 ```
