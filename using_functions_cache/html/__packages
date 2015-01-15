@@ -1,6 +1,7 @@
 base
 bitops
 fantasysocceR
+ggplot2
 plyr
 RCurl
 rjson
