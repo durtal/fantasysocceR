@@ -1,1 +1,5 @@
 language: r
+
+apt_packages:
+  - libssl-dev
+  - libsasl2-dev
