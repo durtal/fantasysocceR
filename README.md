@@ -1,6 +1,8 @@
 fantasysocceR (0.2.0)
 =============
 
+Will update package (with 2014/15 season data) when the Premiership season is complete
+
 R package with datasets and functions for the fantasy football game [fantasy.premierleague.com](http://fantasy.premierleague.com/).
 
 Here is a short blog post [introducing the package](http://durtal.github.io/blog/r-package-fantasysocceR.html).  Help pages can be found [here](http://durtal.github.io/fantasysocceR/)
