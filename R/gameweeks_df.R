@@ -13,7 +13,6 @@
 #' }
 #' 
 #' @param \strong{player_list} list returned by \link{collect_ff}
-#' @export
 #' @examples
 #' ## Collect fresh data
 #' player_list <- collect_ff(n = 10)
@@ -23,6 +22,14 @@ gameweeks_df <- function(player_list) {
     tmp <- ldply(player_list, gameweeks_helper)
     
     tmp <- tmp[!duplicated(tmp),]
+    
+    tmp <- data.frame(lapply(tmp, function(x) {
+        if(is.factor(x)) {
+            as.character(x)
+        } else {
+            x
+        }
+    }), stringsAsFactors = FALSE)
     
     return(tmp)
 }
