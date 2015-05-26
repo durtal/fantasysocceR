@@ -134,6 +134,7 @@ img {
                         <li><a href="players.html">players</a></li>
                         <li><a href="pastseasons.html">pastseasons</a></li>
                         <li><a href="gameweeks.html">gameweeks</a></li>
+                        <li><a href="season201415.html">season201415</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -146,7 +147,6 @@ img {
                         <li><a href="collect_ff.html">collect_ff</a></li>
                         <li><a href="players_df.html">players_df</a></li>
                         <li><a href="pastseasons_df.html">pastseasons_df</a></li>
-                        <li><a href="gameweeks_df.html">gameweeks.df</a></li>
                         <li><a href="currentseason_df.html">currentseason_df</a></li>
                     </ul>
                 </li>
@@ -163,16 +163,16 @@ img {
 <p>The <strong>pastseasons</strong> dataset contains performance data for past seasons for all current players in the <a href="http://fantasy.premierleague.com">fantasy.premierleague.com</a> game. Not all players in the game have past data, such as Alexis Sanchez, these players are still included in the dataset but their performance data is recorded as NA</p>
 <p>Once the package has been loaded, to access the dataset:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(pastseasons)</code></pre>
-<p>The dataframe has dimensions 1936 rows and 24 columns.</p>
+<p>The dataframe has dimensions 2162 rows and 24 columns.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(pastseasons)</code></pre>
-<pre><code>## &#39;data.frame&#39;:    1936 obs. of  24 variables:
-##  $ pos     : chr  &quot;Goalkeeper&quot; &quot;Goalkeeper&quot; &quot;Goalkeeper&quot; &quot;Goalkeeper&quot; ...
-##  $ team    : chr  &quot;Arsenal&quot; &quot;Arsenal&quot; &quot;Arsenal&quot; &quot;Arsenal&quot; ...
-##  $ pts     : num  157 157 157 157 157 157 155 155 155 155 ...
+<pre><code>## &#39;data.frame&#39;:    2162 obs. of  24 variables:
 ##  $ id      : num  1 1 1 1 1 1 2 2 2 2 ...
 ##  $ name    : chr  &quot;Szczesny&quot; &quot;Szczesny&quot; &quot;Szczesny&quot; &quot;Szczesny&quot; ...
-##  $ value   : num  5.5 5.5 5.5 5.5 5.5 5.5 6 6 6 6 ...
-##  $ pct     : num  12.3 12.3 12.3 12.3 12.3 12.3 11.2 11.2 11.2 11.2 ...
+##  $ pos     : chr  &quot;Goalkeeper&quot; &quot;Goalkeeper&quot; &quot;Goalkeeper&quot; &quot;Goalkeeper&quot; ...
+##  $ team    : chr  &quot;Arsenal&quot; &quot;Arsenal&quot; &quot;Arsenal&quot; &quot;Arsenal&quot; ...
+##  $ pts     : num  47 47 47 47 47 47 120 120 120 120 ...
+##  $ value   : num  5.2 5.2 5.2 5.2 5.2 5.2 6.1 6.1 6.1 6.1 ...
+##  $ pct     : num  4.7 4.7 4.7 4.7 4.7 4.7 9.9 9.9 9.9 9.9 ...
 ##  $ season  : chr  &quot;2008/09&quot; &quot;2009/10&quot; &quot;2010/11&quot; &quot;2011/12&quot; ...
 ##  $ mins    : num  0 0 1350 3420 2250 ...
 ##  $ goals   : num  0 0 0 0 0 0 2 2 2 2 ...
@@ -195,18 +195,18 @@ img {
 <pre class="sourceCode r"><code class="sourceCode r">tmp &lt;-<span class="st"> </span><span class="kw">subset</span>(pastseasons, season ==<span class="st"> &quot;2010/11&quot;</span> |<span class="st"> </span>season ==<span class="st"> &quot;2011/12&quot;</span> |<span class="st"> </span>season ==<span class="st"> &quot;2012/13&quot;</span> |<span class="st"> </span>season ==<span class="st"> &quot;2013/14&quot;</span>,
               <span class="dt">select =</span> <span class="kw">c</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;id&quot;</span>, <span class="st">&quot;pos&quot;</span>, <span class="st">&quot;team&quot;</span>, <span class="st">&quot;pct&quot;</span>, <span class="st">&quot;value&quot;</span>, <span class="st">&quot;season&quot;</span>, <span class="st">&quot;fin_val&quot;</span>, <span class="st">&quot;ssn_pts&quot;</span>))
 <span class="kw">dim</span>(tmp)</code></pre>
-<pre><code>## [1] 1288    9</code></pre>
+<pre><code>## [1] 1371    9</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># we need the reshape2 package, to create a &#39;long&#39; dataframe, with one player per row</span>
 <span class="kw">library</span>(reshape2)
 ssn2ssn &lt;-<span class="st"> </span><span class="kw">dcast</span>(tmp, name +<span class="st"> </span>id +<span class="st"> </span>pos +<span class="st"> </span>team +<span class="st"> </span>pct +<span class="st"> </span>value ~<span class="st"> </span>season, <span class="dt">value.var =</span> <span class="st">&quot;ssn_pts&quot;</span>)
 <span class="kw">head</span>(ssn2ssn)    </code></pre>
-<pre><code>##          name id        pos     team  pct value 2010/11 2011/12 2012/13
-## 1    Szczesny  1 Goalkeeper  Arsenal 12.3   5.5      62     139     102
-## 2   Koscielny  2   Defender  Arsenal 11.2   6.0      85     103      88
-## 3   Vermaelen  3   Defender  Arsenal  0.5   5.0      15     132      70
-## 4       Gibbs  4   Defender  Arsenal  3.7   5.5       7      61      93
-## 5   Jenkinson  5   Defender West Ham  0.2   5.0      NA      12      51
-## 6 Mertesacker  6   Defender  Arsenal  7.2   6.0      NA      59     135
+<pre><code>##          name id        pos     team pct value 2010/11 2011/12 2012/13
+## 1    Szczesny  1 Goalkeeper  Arsenal 4.7   5.2      62     139     102
+## 2   Koscielny  2   Defender  Arsenal 9.9   6.1      85     103      88
+## 3   Vermaelen  3   Defender  Arsenal 0.1   5.0      15     132      70
+## 4       Gibbs  4   Defender  Arsenal 1.7   5.2       7      61      93
+## 5   Jenkinson  5   Defender West Ham 0.8   5.0      NA      12      51
+## 6 Mertesacker  6   Defender  Arsenal 5.2   6.1      NA      59     135
 ##   2013/14
 ## 1     157
 ## 2     155

@@ -1,0 +1,22 @@
+---
+title: "season201415"
+---
+
+#### Description
+
+The **season201415** dataset contains data for each of the gameweeks in the [fantasy.premierleague.com](http://fantasy.premierleague.com) game.  The data is player based, so each player in the game could have up to 38 rows of data (1 per gameweek) with variables such as points scored, gameweek value, net transters, etc.
+
+Once the package has been installed and loaded, to access the dataset
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+library(fantasysocceR)
+```
+
+```{r}
+data(season201415)
+```
+
+The dataset has `r dim(season201415)[1]` rows and `r dim(season201415)[2]` columns, its structure is:x:
+
+```{r echo=FALSE}
+str(season201415)
+```

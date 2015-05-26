@@ -21,7 +21,7 @@ A new list of length `r length(new_data)`, each list element is one player and c
 
 _`r names(new_data[[1]])`_
 
-Not all of the data for each player is particularly valuable, such as photo.  However we can extract the data found in the [**players**](players.html), [**pastseasons**](pastseasons.html) and [**gameweeks**](gameweeks.html) datasets.  The code below shows how:
+Not all of the data for each player is particularly valuable, such as photo.  However we can extract the data found in the [**players**](players.html), [**pastseasons**](pastseasons.html) datasets.  The code below shows how:
 
 ```{r}
 new_players_df <- players_df(new_data)
@@ -32,9 +32,6 @@ The pastseasons dataset won't change much, however that dataset also contains da
 ```{r}
 new_pastseasons_df <- pastseasons_df(new_data)
 dim(new_pastseasons_df)
-
-# to get an up-to-date gameweeks dataset it requires a player from each of the 20 teams to have been collected, you can do this by finding the ids of one player at each club and collect that data, or collect every player in the game
-new_gameweeks_df <- gameweeks_df(new_data)
 ```
 
 There is one function, `currentseason_df`, that may be more interesting, it creates a dataframe, similar to that of pastseasons, but it records the performance of every player in every gameweek so far in the current season.  So unsurprisingly it has 150 rows as there has been 3 gameweeks thus far, 3*50 = 150.

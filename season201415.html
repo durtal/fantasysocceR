@@ -10,7 +10,7 @@
 
 
 
-<title>pastseasons_df</title>
+<title>season201415</title>
 
 <script src="libs/jquery-1.11.0/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -156,46 +156,44 @@ img {
 </nav>
 
 <div id="header">
-<h1 class="title">pastseasons_df</h1>
+<h1 class="title">season201415</h1>
 </div>
 
 
 <div id="description" class="section level4">
 <h4>Description</h4>
-<p>The <code>pastseasons_df</code> function converts the data found in the list returned by the <a href="collect_ff.html">collect_ff</a> function when getting fresh data. The default dataframe returns in the same format as the <a href="pastseasons.html">pastseasons</a> dataset.</p>
-</div>
-<div id="usage" class="section level4">
-<h4>Usage</h4>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pastseasons_df</span>(player_list, <span class="dt">add_vars =</span> <span class="ot">NULL</span>)</code></pre>
-</div>
-<div id="arguments" class="section level4">
-<h4>Arguments</h4>
-<table>
-<thead>
-<tr class="header">
-<th align="left">param</th>
-<th align="left">details</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">player_list</td>
-<td align="left">the list of players returned by <a href="collect_ff.html">collect_ff</a></td>
-</tr>
-<tr class="even">
-<td align="left">add_vars</td>
-<td align="left">extra variables to add if desired</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="example-use" class="section level4">
-<h4>Example use</h4>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># convert list into dataframe</span>
-new_players_df &lt;-<span class="st"> </span><span class="kw">players_df</span>(<span class="dt">player_list =</span> player_list)
-
-<span class="co"># convert list into dataframe and add a couple of variables, points per game</span>
-new_players_df &lt;-<span class="st"> </span><span class="kw">players_df</span>(<span class="dt">player_list =</span> player_list, <span class="dt">add_vars =</span> <span class="kw">c</span>(<span class="st">&quot;points_per_game&quot;</span>))</code></pre>
+<p>The <strong>season201415</strong> dataset contains data for each of the gameweeks in the <a href="http://fantasy.premierleague.com">fantasy.premierleague.com</a> game. The data is player based, so each player in the game could have up to 38 rows of data (1 per gameweek) with variables such as points scored, gameweek value, net transters, etc.</p>
+<p>Once the package has been installed and loaded, to access the dataset</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(season201415)</code></pre>
+<p>The dataset has 24876 rows and 27 columns, its structure is:x:</p>
+<pre><code>## &#39;data.frame&#39;:    24876 obs. of  27 variables:
+##  $ id           : num  1 1 1 1 1 1 1 1 1 1 ...
+##  $ name         : chr  &quot;Szczesny&quot; &quot;Szczesny&quot; &quot;Szczesny&quot; &quot;Szczesny&quot; ...
+##  $ pos          : chr  &quot;Goalkeeper&quot; &quot;Goalkeeper&quot; &quot;Goalkeeper&quot; &quot;Goalkeeper&quot; ...
+##  $ team         : chr  &quot;Arsenal&quot; &quot;Arsenal&quot; &quot;Arsenal&quot; &quot;Arsenal&quot; ...
+##  $ pts          : num  47 47 47 47 47 47 47 47 47 47 ...
+##  $ value        : num  5.2 5.2 5.2 5.2 5.2 5.2 5.2 5.2 5.2 5.2 ...
+##  $ pct          : num  4.7 4.7 4.7 4.7 4.7 4.7 4.7 4.7 4.7 4.7 ...
+##  $ date         : chr  &quot;16 Aug 17:30&quot; &quot;23 Aug 17:30&quot; &quot;31 Aug 16:00&quot; &quot;13 Sep 12:45&quot; ...
+##  $ gw           : num  1 2 3 4 5 6 7 8 9 10 ...
+##  $ opp          : chr  &quot;CRY(H) 2-1&quot; &quot;EVE(A) 2-2&quot; &quot;LEI(A) 1-1&quot; &quot;MCI(H) 2-2&quot; ...
+##  $ mins         : num  90 90 90 90 90 90 90 90 90 90 ...
+##  $ goals        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ assists      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ cs           : num  0 0 0 0 1 0 0 0 1 1 ...
+##  $ ga           : num  1 2 1 2 0 1 2 2 0 0 ...
+##  $ og           : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ pens_svd     : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ pens_msd     : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ yel          : num  0 0 1 0 0 0 0 0 0 0 ...
+##  $ red          : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ saves        : num  1 0 2 6 2 4 1 2 3 2 ...
+##  $ bonus        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ ea_ppi       : num  13 5 7 12 14 10 3 7 16 14 ...
+##  $ bps          : num  7 9 15 17 22 13 9 9 22 24 ...
+##  $ net_transfers: num  0 -9306 -20971 -39686 -15931 ...
+##  $ gw_val       : num  5.5 5.5 5.5 5.5 5.5 5.5 5.5 5.4 5.4 5.4 ...
+##  $ gw_pts       : num  2 1 1 3 6 3 1 1 7 6 ...</code></pre>
 </div>
 
 
