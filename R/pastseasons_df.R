@@ -32,18 +32,20 @@
 #'      \item \strong{ssn_pts} total points for the season
 #' }
 #' 
-#' @param \strong{player_list} list of players (the list returned by 
+#' @param player_list list of players (the list returned by 
 #' \link{collect_ff})
-#' @param \strong{add_vars} extra variables to add if desired, see details of
+#' @param add_vars extra variables to add if desired, see details of
 #' \link{players_df} for available extra variables
 #' @export
 #' @examples
-#' ## Collect fresh data
+#' \dontrun{
+#' # Collect fresh data
 #' player_list <- collect_ff(n = 10)
 #' pastseasons <- pastseasons_df(player_list)
+#' }
 pastseasons_df <- function(player_list, add_vars = NULL) {
     
-    tmp <- ldply(player_list, function(x) {
+    tmp <- plyr::ldply(player_list, function(x) {
         p_df <- players_helper(x, add_vars = add_vars)
         s_df <- pastseasons_helper(x)
         compdf <- cbind(p_df, s_df)

@@ -6,6 +6,9 @@
 \usage{
 pastseasons_helper(player)
 }
+\arguments{
+\item{player}{individual player (list) returned by \link{collect_ff}}
+}
 \description{
 pastseasons_helper is called by \link{pastseasons_df} to
 collate data for players who

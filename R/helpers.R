@@ -1,5 +1,8 @@
 #' Helper function 
 #' 
+#' @param player individual player (list) returned by \link{collect_ff}
+#' @param add_vars any additional variables to return from list
+#' 
 #' @description players_helper is called by both \link{players_df} and 
 #' \link{pastseasons_df} to collate summary data for each player.
 players_helper <- function(player, add_vars = NULL) {
@@ -27,6 +30,8 @@ players_helper <- function(player, add_vars = NULL) {
 }
 
 #' Helper function
+#' 
+#' @param player individual player (list) returned by \link{collect_ff}
 #'
 #' @description pastseasons_helper is called by \link{pastseasons_df} to 
 #' collate data for players who
@@ -40,7 +45,7 @@ pastseasons_helper <- function(player) {
                           red=NA, saves=NA, bonus=NA, ea_ppi=NA, bps=NA, 
                           fin_val=NA, ssn_pts=NA, stringsAsFactors = FALSE)
     } else {
-        ssn <- ldply(seasons, function(x) {
+        ssn <- plyr::ldply(seasons, function(x) {
             names(x) <- c("season", "mins", "goals", "assists", "cs", "ga", "og",
                           "pens_svd", "pens_msd", "yel", "red", "saves", 
                           "bonus", "ea_ppi", "bps", "fin_val", "ssn_pts")
@@ -55,30 +60,7 @@ pastseasons_helper <- function(player) {
 
 #' Helper function
 #' 
-#' @description gameweeks_helper is called by \link{gameweeks_df} to collate
-#' fixture data
-gameweeks_helper <- function(player) {
-    
-    fixtures <- ldply(player$fixtures$all)
-    
-    team <- player$team_name
-    
-    tmpdf <- cbind(team, fixtures)
-    names(tmpdf) <- c("team", "date", "gw", "opp")
-    
-    tmpdf$gw <- as.numeric(str_replace_all(tmpdf$gw, "[[:alpha:]]", ""))
-    
-    tmpdf$home <- ifelse(unlist(
-        str_extract_all(tmpdf$opp, "\\([[:alpha:]]\\)"))=="(H)", TRUE, FALSE)
-    
-    tmpdf$opp <- str_trim(
-        str_replace_all(tmpdf$opp, "\\([[:alpha:]]\\)", ""), side="both")
-    
-    return(tmpdf)
-    
-}
-
-#' Helper function
+#' @param player individual player (list) returned by \link{collect_ff}
 #' 
 #' @description currentseason_helper is called by \link{currentseason_df} to
 #' collate data for the current season
@@ -86,7 +68,7 @@ currentseason_helper <- function(player) {
     
     season <- player$fixture_history$all
     
-    ssn <- ldply(season, function(x) {
+    ssn <- plyr::ldply(season, function(x) {
         names(x) <- c("date", "gw", "opp", "mins", "goals", "assists", "cs",
                       "ga", "og", "pens_svd", "pens_msd", "yel", "red", "saves",
                       "bonus", "ea_ppi", "bps", "net_transfers", "gw_val", 

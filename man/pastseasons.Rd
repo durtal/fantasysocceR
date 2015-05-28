@@ -7,7 +7,7 @@
 \format{1920 rows, 24 columns}
 \description{
 Data about the current players in the game and their performance
-in past seasons.  Unlike \link{players} or \link{gameweeks} datasets, the
+in past seasons.  Unlike \link{players} dataset, the
 majority of the variables in this dataset should be stable, but it does
 include some of the data found in \link{players}.
 }

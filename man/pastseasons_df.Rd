@@ -7,10 +7,10 @@
 pastseasons_df(player_list, add_vars = NULL)
 }
 \arguments{
-\item{\strong{player_list}}{list of players (the list returned by
+\item{player_list}{list of players (the list returned by
 \link{collect_ff})}
 
-\item{\strong{add_vars}}{extra variables to add if desired, see details of
+\item{add_vars}{extra variables to add if desired, see details of
 \link{players_df} for available extra variables}
 }
 \description{
@@ -48,8 +48,10 @@ summary data for the current season.  The dataframe returned consists of:
 }
 }
 \examples{
-## Collect fresh data
+\dontrun{
+# Collect fresh data
 player_list <- collect_ff(n = 10)
 pastseasons <- pastseasons_df(player_list)
+}
 }
 

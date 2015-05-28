@@ -7,10 +7,10 @@
 players_df(player_list, add_vars = NULL)
 }
 \arguments{
-\item{\strong{player_list}}{list of players (the list returned by
+\item{player_list}{list of players (the list returned by
 \link{collect_ff})}
 
-\item{\strong{add_vars}}{extra variables to add if desired}
+\item{add_vars}{extra variables to add if desired}
 }
 \description{
 Converts the list returned by \link{collect_ff} into a summary
@@ -72,8 +72,10 @@ while others I have no idea what they are (at the moment):
 }
 }
 \examples{
-#' ## Collect fresh data
+\dontrun{
+# Collect fresh data
 player_list <- collect_ff(n = 10)
 players <- players_df(player_list)
+}
 }
 

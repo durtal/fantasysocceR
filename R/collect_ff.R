@@ -17,10 +17,10 @@
 #' some time to run, and returns a list which can then be turned into dataframes
 #' using other functions in the package, see \link{players_df}, \link{pastseasons_df}.
 #' 
-#' @param \strong{n} number of players (default = 600)
-#' @param \strong{specify_ids} numeric vector, collect data for specific players
+#' @param n number of players (default = 600)
+#' @param specify_ids numeric vector, collect data for specific players
 #' using their id
-#' @param \strong{.progress} progress bar - "text", "time", "tk", or "win"
+#' @param .progress progress bar - "text", "time", "tk", or "win"
 #' @export
 collect_ff <- function(n = 600, specify_ids = NULL, .progress = "none") {
     
@@ -30,11 +30,11 @@ collect_ff <- function(n = 600, specify_ids = NULL, .progress = "none") {
         ids <- 1:n
     }
     
-    player_list <- llply(ids, function(x) {
+    player_list <- plyr::llply(ids, function(x) {
         Sys.sleep(1)
         new_url <- sprintf("http://fantasy.premierleague.com/web/api/elements/%s/?format=json", x)
-        if(url.exists(new_url)) {
-            tmp <- fromJSON(file = new_url)
+        if(RCurl::url.exists(new_url)) {
+            tmp <- rjson::fromJSON(file = new_url)
         } else {
             tmp <- NULL
         }

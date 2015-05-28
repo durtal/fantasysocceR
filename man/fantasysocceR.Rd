@@ -16,7 +16,7 @@ Datasets include:
 \itemize{
      \item \strong{players} Player summary data, see \link{players}
      \item \strong{pastseasons} Past season data, see \link{pastseasons}
-     \item \strong{gameweeks} Fixture data, see \link{gameweeks}
+     \item \strong{season201415} Performance data for the 2014/15 Season, see \link{season201415}
 }
 }
 \details{

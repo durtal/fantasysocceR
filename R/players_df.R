@@ -56,17 +56,19 @@
 #'      \item \strong{element_type}
 #'      \item \strong{team}
 #' }
-#' @param \strong{player_list} list of players (the list returned by 
+#' @param player_list list of players (the list returned by 
 #' \link{collect_ff})
-#' @param \strong{add_vars} extra variables to add if desired
+#' @param add_vars extra variables to add if desired
 #' @export
 #' @examples
-#' #' ## Collect fresh data
+#' \dontrun{
+#' # Collect fresh data
 #' player_list <- collect_ff(n = 10)
 #' players <- players_df(player_list)
+#' }
 players_df <- function(player_list, add_vars = NULL) {
     
-    tmp <- ldply(player_list, players_helper, add_vars = add_vars)
+    tmp <- plyr::ldply(player_list, players_helper, add_vars = add_vars)
     
     return(tmp)
 }

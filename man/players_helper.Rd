@@ -6,6 +6,11 @@
 \usage{
 players_helper(player, add_vars = NULL)
 }
+\arguments{
+\item{player}{individual player (list) returned by \link{collect_ff}}
+
+\item{add_vars}{any additional variables to return from list}
+}
 \description{
 players_helper is called by both \link{players_df} and
 \link{pastseasons_df} to collate summary data for each player.

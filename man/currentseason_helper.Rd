@@ -6,6 +6,9 @@
 \usage{
 currentseason_helper(player)
 }
+\arguments{
+\item{player}{individual player (list) returned by \link{collect_ff}}
+}
 \description{
 currentseason_helper is called by \link{currentseason_df} to
 collate data for the current season

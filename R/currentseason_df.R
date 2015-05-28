@@ -34,18 +34,20 @@
 #'      \item \strong{gw_pts} gameweek points 
 #' }
 #' 
-#' @param \strong{player_list} list of players (the list returned by 
+#' @param player_list list of players (the list returned by 
 #' \link{collect_ff})
-#' @param \strong{add_vars} extra variables to add if desired, see details of
+#' @param add_vars extra variables to add if desired, see details of
 #' \link{players_df} for available extra variables
 #' @export
 #' @examples
-#' #' ## Collect fresh data
+#' \dontrun{
+#' # Collect fresh data
 #' player_list <- collect_ff(n = 10)
 #' players <- currentseason_df(player_list)
+#' }
 currentseason_df <- function(player_list, add_vars = NULL) {
     
-    tmp <- ldply(player_list, function(x) {
+    tmp <- plyr::ldply(player_list, function(x) {
         p_df <- players_helper(x, add_vars = add_vars)
         c_df <- currentseason_helper(x)
         compdf <- cbind(p_df, c_df)

@@ -7,12 +7,12 @@
 collect_ff(n = 600, specify_ids = NULL, .progress = "none")
 }
 \arguments{
-\item{\strong{n}}{number of players (default = 600)}
+\item{n}{number of players (default = 600)}
 
-\item{\strong{specify_ids}}{numeric vector, collect data for specific players
+\item{specify_ids}{numeric vector, collect data for specific players
 using their id}
 
-\item{\strong{.progress}}{progress bar - "text", "time", "tk", or "win"}
+\item{.progress}{progress bar - "text", "time", "tk", or "win"}
 }
 \description{
 Use this function sparingly!! It will collect fantasy football data from

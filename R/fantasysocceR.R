@@ -12,7 +12,7 @@
 #' \itemize{
 #'      \item \strong{players} Player summary data, see \link{players}
 #'      \item \strong{pastseasons} Past season data, see \link{pastseasons}
-#'      \item \strong{gameweeks} Fixture data, see \link{gameweeks}
+#'      \item \strong{season201415} Performance data for the 2014/15 Season, see \link{season201415}
 #' }
 #' @name fantasysocceR
 #' @docType package
@@ -43,7 +43,7 @@ NULL
 #' Past seasons dataset
 #' 
 #' @description Data about the current players in the game and their performance
-#' in past seasons.  Unlike \link{players} or \link{gameweeks} datasets, the
+#' in past seasons.  Unlike \link{players} dataset, the
 #' majority of the variables in this dataset should be stable, but it does
 #' include some of the data found in \link{players}.  
 #' 
@@ -82,28 +82,6 @@ NULL
 #'      \item \strong{bps} bonus points system
 #'      \item \strong{fin_val} player value at close of season
 #'      \item \strong{ssn_pts} total points for that season
-#' }
-NULL
-
-#' Gameweeks dataset
-#' 
-#' @description Data about the gameweeks, which team will face which team.  Like
-#' the \link{players} dataset, this will likely change as/when teams are forced
-#' to change their fixture schedule.  See \link{collect_ff} and related 
-#' functions for getting up-to-date data.
-#' 
-#' @docType data
-#' @keywords datasets
-#' @name gameweeks
-#' @format 760 rows, 5 columns
-#' @details Variables
-#' \itemize{
-#'      \item \strong{date} fixture data
-#'      \item \strong{gw} gameweek
-#'      \item \strong{team} team
-#'      \item \strong{home} are team at home (\code{TRUE}), or away 
-#'      (\code{FALSE})
-#'      \item \strong{opp} opponent
 #' }
 NULL
 
