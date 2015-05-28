@@ -1,7 +1,7 @@
 Package: fantasysocceR
 Type: Package
 Title: Fantasy Football (soccer) datasets and functions
-Version: 0.2.0
+Version: 1.0.0
 Date: 2014-08-08
 Author: Thomas Heslop
 Maintainer: Thomas Heslop <t_heslop@hotmail.co.uk>
@@ -11,7 +11,7 @@ Description: Datasets for players and teams in the fantasy football (soccer)
     to update datasets regularly, but functions are available to help collect
     up-to-date data in the same/similar format to the existing datasets.
 License: GPL-2
-Depends:
+Imports:
     plyr,
     rjson,
     RCurl,
