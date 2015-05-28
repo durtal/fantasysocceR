@@ -2,6 +2,7 @@
 
 export(collect_ff)
 export(currentseason_df)
+export(epl_palettes)
 export(pastseasons_df)
 export(players_df)
 export(team_pal)
