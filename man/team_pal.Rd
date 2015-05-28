@@ -4,10 +4,14 @@
 \alias{team_pal}
 \title{Premiership Team colors palette}
 \usage{
-team_pal(teams = NULL)
+team_pal(teams = NULL, simple = TRUE, n = 1)
 }
 \arguments{
-\item{\strong{teams}}{specify teams (not always necessary)}
+\item{teams}{specify teams (not always necessary)}
+
+\item{simple}{return a single colour per team}
+
+\item{n}{number of colours to return in a palette (per team) (maximum of 3)}
 }
 \description{
 Palette of primary team colors where possible - the secondary color is used
@@ -19,14 +23,14 @@ of the datasets in this package.  It can simply be called within a ggplot
 plot, see \emph{examples}
 }
 \examples{
+\dontrun{
 team_pal(teams = c("Arsenal", "Aston Villa"))
-   Arsenal Aston Villa
- "#F12933"   "#A32249"
 
 # using within ggplot
 data(players)
 ggplot(players, aes(x=value, y=pts, color=team)) +
      geom_point() +
      scale_color_manual(values = team_pal())
+}
 }
 
