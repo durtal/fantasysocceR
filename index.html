@@ -133,7 +133,6 @@ img {
                     <ul class="dropdown-menu">
                         <li><a href="players.html">players</a></li>
                         <li><a href="pastseasons.html">pastseasons</a></li>
-                        <li><a href="gameweeks.html">gameweeks</a></li>
                         <li><a href="season201415.html">season201415</a></li>
                     </ul>
                 </li>
@@ -148,6 +147,7 @@ img {
                         <li><a href="players_df.html">players_df</a></li>
                         <li><a href="pastseasons_df.html">pastseasons_df</a></li>
                         <li><a href="currentseason_df.html">currentseason_df</a></li>
+                        <li><a href="team_pal.html">team_pal</a></li>
                     </ul>
                 </li>
             </ul>
@@ -166,8 +166,17 @@ img {
 devtools::<span class="kw">install_github</span>(<span class="dt">repo =</span> <span class="st">&quot;fantasysocceR&quot;</span>, <span class="dt">user =</span> <span class="st">&quot;durtal&quot;</span>)</code></pre>
 <div id="datasets" class="section level3">
 <h3>Datasets</h3>
-<p>There are 3 stable datasets that come with the package, these datasets were collected the day before the 2014/15 Premier League season started (data will have changed since that collection). The datasets are: <a href="players.html"><strong>players</strong></a> <a href="pastseasons.html"><strong>pastseasons</strong></a> <a href="gameweeks.html"><strong>gameweeks</strong></a></p>
-<p>There is a function to enable collection of up-to-date fantasy football data, this function is <a href="collect_ff.html"><strong>collect_ff</strong></a>, which returns a list, this list can then be passed to 1 of 4 functions which will turn the list into dataframes similar to the 3 stable dataframes. These functions are: <a href="players_df.html"><strong>players_df</strong></a>, <a href="pastseasons_df.html"><strong>pastseasons_df</strong></a>, <a href="gameweeks_df.html"><strong>gameweeks_df</strong></a>, and <a href="currentseasons_df.html"><strong>currentseasons_df</strong></a>, to see these functions in action see <a href="using_functions.html">here</a></p>
+<p>There are 3 stable datasets that come with the package, these datasets were updated after the 2014/15 Premier League season was completed. The datasets are:</p>
+<ul>
+<li><a href="players.html"><strong>players</strong></a></li>
+<li><a href="pastseasons.html"><strong>pastseasons</strong></a></li>
+<li><a href="season201415.html"><strong>season201415</strong></a></li>
+</ul>
+</div>
+<div id="functions" class="section level3">
+<h3>Functions</h3>
+<p>There are a few functions included in the package, one of which collects up-to-date fantasy football data, the function is <a href="collect_ff.html"><code>collect_ff</code></a>. This function returns a list of players and their performance data. This list can then be converted to neat dataframes using some of the packages other functions, these are <a href="players_df.html"><code>players_df</code></a>, <a href="pastseasons_df.html"><code>pastseasons_df</code></a> and <a href="currentseasons_df.html"><code>currentseasons_df</code></a>. To see these functions in action see <a href="using_functions.html">here</a>.</p>
+<p>Another function, <a href="team_pal.html"><code>team_pal</code></a> provides a simple palette for the teams in the 2014/15 season, this palette can then be used in conjunction with <code>ggplot2</code> to create some nice plots.</p>
 </div>
 
 

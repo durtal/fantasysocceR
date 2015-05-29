@@ -133,7 +133,6 @@ img {
                     <ul class="dropdown-menu">
                         <li><a href="players.html">players</a></li>
                         <li><a href="pastseasons.html">pastseasons</a></li>
-                        <li><a href="gameweeks.html">gameweeks</a></li>
                         <li><a href="season201415.html">season201415</a></li>
                     </ul>
                 </li>
@@ -148,6 +147,7 @@ img {
                         <li><a href="players_df.html">players_df</a></li>
                         <li><a href="pastseasons_df.html">pastseasons_df</a></li>
                         <li><a href="currentseason_df.html">currentseason_df</a></li>
+                        <li><a href="team_pal.html">team_pal</a></li>
                     </ul>
                 </li>
             </ul>
@@ -165,7 +165,7 @@ img {
 <p>The <strong>season201415</strong> dataset contains data for each of the gameweeks in the <a href="http://fantasy.premierleague.com">fantasy.premierleague.com</a> game. The data is player based, so each player in the game could have up to 38 rows of data (1 per gameweek) with variables such as points scored, gameweek value, net transters, etc.</p>
 <p>Once the package has been installed and loaded, to access the dataset</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(season201415)</code></pre>
-<p>The dataset has 24876 rows and 27 columns, its structure is:x:</p>
+<p>The dataset has 24876 rows and 27 columns, its structure is:</p>
 <pre><code>## &#39;data.frame&#39;:    24876 obs. of  27 variables:
 ##  $ id           : num  1 1 1 1 1 1 1 1 1 1 ...
 ##  $ name         : chr  &quot;Szczesny&quot; &quot;Szczesny&quot; &quot;Szczesny&quot; &quot;Szczesny&quot; ...
@@ -194,6 +194,29 @@ img {
 ##  $ net_transfers: num  0 -9306 -20971 -39686 -15931 ...
 ##  $ gw_val       : num  5.5 5.5 5.5 5.5 5.5 5.5 5.5 5.4 5.4 5.4 ...
 ##  $ gw_pts       : num  2 1 1 3 6 3 1 1 7 6 ...</code></pre>
+</div>
+<div id="example-plot" class="section level4">
+<h4>Example plot</h4>
+<p>The number of players per team to have played more than 80% of possible minutes, we’ll use <code>dplyr</code> to manipulate the data and <code>ggplot2</code> to plot it, we’ll also use the <code>team_pal</code> function included in the <strong>fantasysocceR</strong> package to style the plot:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+<span class="kw">library</span>(ggplot2)
+
+season201415 %&gt;%<span class="st"> </span>
+<span class="st">    </span><span class="kw">group_by</span>(id, name, team) %&gt;%<span class="st"> </span>
+<span class="st">    </span><span class="kw">summarise</span>(<span class="dt">total_mins =</span> <span class="kw">sum</span>(mins)) %&gt;%<span class="st"> </span>
+<span class="st">    </span><span class="kw">ungroup</span>() %&gt;%<span class="st"> </span>
+<span class="st">    </span><span class="kw">filter</span>(total_mins &gt;<span class="st"> </span>(<span class="fl">0.8</span> *<span class="st"> </span>(<span class="dv">90</span> *<span class="st"> </span><span class="dv">38</span>))) %&gt;%<span class="st"> </span>
+<span class="st">    </span><span class="kw">group_by</span>(team) %&gt;%<span class="st"> </span>
+<span class="st">    </span><span class="kw">summarise</span>(<span class="dt">n_players =</span> <span class="kw">n</span>()) %&gt;%<span class="st"> </span>
+<span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> team, <span class="dt">y =</span> n_players, <span class="dt">fill =</span> team)) +<span class="st"> </span>
+<span class="st">        </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) +<span class="st"> </span>
+<span class="st">        </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> <span class="kw">team_pal</span>(), <span class="dt">guide=</span>F) +<span class="st"> </span>
+<span class="st">        </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Team&quot;</span>,
+             <span class="dt">y =</span> <span class="st">&quot;Players&quot;</span>,
+             <span class="dt">title =</span> <span class="st">&quot;No. of players to play in &gt;80% of possible minutes&quot;</span>) +
+<span class="st">        </span><span class="kw">theme_minimal</span>() +<span class="st"> </span>
+<span class="st">        </span><span class="kw">theme</span>(<span class="dt">axis.text.x=</span><span class="kw">element_text</span>(<span class="dt">angle=</span><span class="dv">45</span>, <span class="dt">vjust=</span><span class="dv">1</span>, <span class="dt">hjust=</span><span class="dv">1</span>))</code></pre>
+<p><img src="season201415_files/figure-html/unnamed-chunk-4-1.png" title="" alt="" width="672" style="display: block; margin: auto;" /></p>
 </div>
 
 

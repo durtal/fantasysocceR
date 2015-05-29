@@ -15,8 +15,33 @@ library(fantasysocceR)
 data(season201415)
 ```
 
-The dataset has `r dim(season201415)[1]` rows and `r dim(season201415)[2]` columns, its structure is:x:
+The dataset has `r dim(season201415)[1]` rows and `r dim(season201415)[2]` columns, its structure is:
 
 ```{r echo=FALSE}
 str(season201415)
+```
+
+#### Example plot
+
+The number of players per team to have played more than 80% of possible minutes, we'll use `dplyr` to manipulate the data and `ggplot2` to plot it, we'll also use the `team_pal` function included in the **fantasysocceR** package to style the plot:
+
+```{r warning=FALSE, message=FALSE, fig.align='center'}
+library(dplyr)
+library(ggplot2)
+
+season201415 %>% 
+    group_by(id, name, team) %>% 
+    summarise(total_mins = sum(mins)) %>% 
+    ungroup() %>% 
+    filter(total_mins > (0.8 * (90 * 38))) %>% 
+    group_by(team) %>% 
+    summarise(n_players = n()) %>% 
+    ggplot(aes(x = team, y = n_players, fill = team)) + 
+        geom_bar(stat = "identity") + 
+        scale_fill_manual(values = team_pal(), guide=F) + 
+        labs(x = "Team",
+             y = "Players",
+             title = "No. of players to play in >80% of possible minutes") +
+        theme_minimal() + 
+        theme(axis.text.x=element_text(angle=45, vjust=1, hjust=1))
 ```

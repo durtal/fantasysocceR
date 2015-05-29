@@ -133,7 +133,6 @@ img {
                     <ul class="dropdown-menu">
                         <li><a href="players.html">players</a></li>
                         <li><a href="pastseasons.html">pastseasons</a></li>
-                        <li><a href="gameweeks.html">gameweeks</a></li>
                         <li><a href="season201415.html">season201415</a></li>
                     </ul>
                 </li>
@@ -148,6 +147,7 @@ img {
                         <li><a href="players_df.html">players_df</a></li>
                         <li><a href="pastseasons_df.html">pastseasons_df</a></li>
                         <li><a href="currentseason_df.html">currentseason_df</a></li>
+                        <li><a href="team_pal.html">team_pal</a></li>
                     </ul>
                 </li>
             </ul>
@@ -160,32 +160,32 @@ img {
 </div>
 
 
-<p>The stable datasets in the package will become out of date as and when users interact with <a href="http://fantasy.premierleague.com">fantasy.premierleague.com</a>, they became out of date almost immediately after the package was created (<em>sigh</em>). The function <code>collect_ff</code> allows for up-to-date data to be collected by accessing the ‘official’ API, the function should be used sparingly. (This post was written 2015-05-26 16:54:19)</p>
+<p>The stable datasets in the package will become out of date as and when users interact with <a href="http://fantasy.premierleague.com">fantasy.premierleague.com</a>, they became out of date almost immediately after the package was created (<em>sigh</em>). The function <code>collect_ff</code> allows for up-to-date data to be collected by accessing the ‘official’ API, the function should be used sparingly. (This post was written 2015-05-29 20:04:24)</p>
 <div id="fresh-data" class="section level3">
 <h3>Fresh Data</h3>
-<p>The <code>collect_ff</code> function needn’t take any arguments, by default it will attempt to collect data for 600 players, this is time-consuming so I won’t do that in this post, instead I will collect just 50 players. The .progress argument is from the <a href="https://github.com/hadley/plyr">plyr</a> package and will tell the user roughly how much longer it will take to complete the collecting (“text” or “time” are most useful imo)</p>
-<pre class="sourceCode r"><code class="sourceCode r">new_data &lt;-<span class="st"> </span><span class="kw">collect_ff</span>(<span class="dt">n =</span> <span class="dv">50</span>)</code></pre>
-<p>A new list of length 50, each list element is one player and contains the following data:</p>
-<p><em>photo, web_name, event_explain, fixture_history, season_history, fixtures, event_total, type_name, team_name, selected_by, total_points, current_fixture, next_fixture, team_code, news, team_id, id, status, code, first_name, second_name, now_cost, chance_of_playing_this_round, chance_of_playing_next_round, value_form, value_season, cost_change_start, cost_change_event, cost_change_start_fall, cost_change_event_fall, in_dreamteam, dreamteam_count, selected_by_percent, form, transfers_out, transfers_in, transfers_out_event, transfers_in_event, loans_in, loans_out, loaned_in, loaned_out, event_points, points_per_game, ep_this, ep_next, special, minutes, goals_scored, assists, clean_sheets, goals_conceded, own_goals, penalties_saved, penalties_missed, yellow_cards, red_cards, saves, bonus, ea_index, bps, element_type, team</em></p>
+<p>The <code>collect_ff</code> function needn’t take any arguments, by default it will attempt to collect data for 600 players, this is time-consuming so I won’t do that in this post, instead I will collect just 25 players. The <code>.progress</code> argument is from the <a href="https://github.com/hadley/plyr">plyr</a> package and will tell the user roughly how much longer it will take to complete the collecting (“text” or “time” are most useful imo)</p>
+<pre class="sourceCode r"><code class="sourceCode r">new_data &lt;-<span class="st"> </span><span class="kw">collect_ff</span>(<span class="dt">n =</span> <span class="dv">25</span>)</code></pre>
+<p>A new list of length 25, each list element is one player and contains the following data:</p>
+<p><em>id, photo, web_name, event_explain, fixture_history, season_history, fixtures, event_total, type_name, team_name, selected_by, total_points, current_fixture, next_fixture, team_code, news, team_id, status, code, first_name, second_name, now_cost, chance_of_playing_this_round, chance_of_playing_next_round, value_form, value_season, cost_change_start, cost_change_event, cost_change_start_fall, cost_change_event_fall, in_dreamteam, dreamteam_count, selected_by_percent, form, transfers_out, transfers_in, transfers_out_event, transfers_in_event, loans_in, loans_out, loaned_in, loaned_out, event_points, points_per_game, ep_this, ep_next, special, minutes, goals_scored, assists, clean_sheets, goals_conceded, own_goals, penalties_saved, penalties_missed, yellow_cards, red_cards, saves, bonus, ea_index, bps, element_type, team</em></p>
 <p>Not all of the data for each player is particularly valuable, such as photo. However we can extract the data found in the <a href="players.html"><strong>players</strong></a>, <a href="pastseasons.html"><strong>pastseasons</strong></a> datasets. The code below shows how:</p>
 <pre class="sourceCode r"><code class="sourceCode r">new_players_df &lt;-<span class="st"> </span><span class="kw">players_df</span>(new_data)
 <span class="kw">dim</span>(new_players_df)</code></pre>
-<pre><code>## [1] 50  7</code></pre>
+<pre><code>## [1] 25  7</code></pre>
 <p>The pastseasons dataset won’t change much, however that dataset also contains data about the current players such as value, team and percentage of teams the player is selected in.</p>
 <pre class="sourceCode r"><code class="sourceCode r">new_pastseasons_df &lt;-<span class="st"> </span><span class="kw">pastseasons_df</span>(new_data)
 <span class="kw">dim</span>(new_pastseasons_df)</code></pre>
-<pre><code>## [1] 182  24</code></pre>
-<p>There is one function, <code>currentseason_df</code>, that may be more interesting, it creates a dataframe, similar to that of pastseasons, but it records the performance of every player in every gameweek so far in the current season. So unsurprisingly it has 150 rows as there has been 3 gameweeks thus far, 3*50 = 150.</p>
+<pre><code>## [1] 121  24</code></pre>
+<p>There is one function, <code>currentseason_df</code>, that may be more interesting, it creates a dataframe, similar to that of pastseasons, but it records the performance of every player in every gameweek so far in the current season.</p>
 <pre class="sourceCode r"><code class="sourceCode r">currentseason &lt;-<span class="st"> </span><span class="kw">currentseason_df</span>(new_data)
 <span class="kw">str</span>(currentseason)</code></pre>
-<pre><code>## &#39;data.frame&#39;:    1050 obs. of  27 variables:
+<pre><code>## &#39;data.frame&#39;:    950 obs. of  27 variables:
+##  $ id           : num  1 1 1 1 1 1 1 1 1 1 ...
 ##  $ name         : chr  &quot;Szczesny&quot; &quot;Szczesny&quot; &quot;Szczesny&quot; &quot;Szczesny&quot; ...
 ##  $ pos          : chr  &quot;Goalkeeper&quot; &quot;Goalkeeper&quot; &quot;Goalkeeper&quot; &quot;Goalkeeper&quot; ...
 ##  $ team         : chr  &quot;Arsenal&quot; &quot;Arsenal&quot; &quot;Arsenal&quot; &quot;Arsenal&quot; ...
 ##  $ pts          : num  47 47 47 47 47 47 47 47 47 47 ...
-##  $ id           : num  1 1 1 1 1 1 1 1 1 1 ...
-##  $ value        : num  5.3 5.3 5.3 5.3 5.3 5.3 5.3 5.3 5.3 5.3 ...
-##  $ pct          : num  5.8 5.8 5.8 5.8 5.8 5.8 5.8 5.8 5.8 5.8 ...
+##  $ value        : num  5.2 5.2 5.2 5.2 5.2 5.2 5.2 5.2 5.2 5.2 ...
+##  $ pct          : num  4.7 4.7 4.7 4.7 4.7 4.7 4.7 4.7 4.7 4.7 ...
 ##  $ date         : chr  &quot;16 Aug 17:30&quot; &quot;23 Aug 17:30&quot; &quot;31 Aug 16:00&quot; &quot;13 Sep 12:45&quot; ...
 ##  $ gw           : num  1 2 3 4 5 6 7 8 9 10 ...
 ##  $ opp          : chr  &quot;CRY(H) 2-1&quot; &quot;EVE(A) 2-2&quot; &quot;LEI(A) 1-1&quot; &quot;MCI(H) 2-2&quot; ...

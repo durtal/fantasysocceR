@@ -11,10 +11,10 @@ library(ggplot2)
 
 ### Fresh Data
 
-The `collect_ff` function needn't take any arguments, by default it will attempt to collect data for 600 players, this is time-consuming so I won't do that in this post, instead I will collect just 50 players.  The .progress argument is from the [plyr](https://github.com/hadley/plyr) package and will tell the user roughly how much longer it will take to complete the collecting ("text" or "time" are most useful imo)
+The `collect_ff` function needn't take any arguments, by default it will attempt to collect data for 600 players, this is time-consuming so I won't do that in this post, instead I will collect just 25 players.  The `.progress` argument is from the [plyr](https://github.com/hadley/plyr) package and will tell the user roughly how much longer it will take to complete the collecting ("text" or "time" are most useful imo)
 
 ```{r, cache=TRUE}
-new_data <- collect_ff(n = 50)
+new_data <- collect_ff(n = 25)
 ```
 
 A new list of length `r length(new_data)`, each list element is one player and contains the following data:
@@ -34,7 +34,7 @@ new_pastseasons_df <- pastseasons_df(new_data)
 dim(new_pastseasons_df)
 ```
 
-There is one function, `currentseason_df`, that may be more interesting, it creates a dataframe, similar to that of pastseasons, but it records the performance of every player in every gameweek so far in the current season.  So unsurprisingly it has 150 rows as there has been 3 gameweeks thus far, 3*50 = 150.
+There is one function, `currentseason_df`, that may be more interesting, it creates a dataframe, similar to that of pastseasons, but it records the performance of every player in every gameweek so far in the current season.
 
 ```{r}
 currentseason <- currentseason_df(new_data)

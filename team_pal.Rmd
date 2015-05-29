@@ -1,0 +1,44 @@
+---
+title: "team_pal"
+---
+
+```{r echo=FALSE}
+library(fantasysocceR)
+```
+
+#### Description
+
+The `team_pal` function provides a simple palette for the teams in the 2014/15 Premiership season.
+
+#### Usage
+```{r, eval=FALSE}
+team_pal(teams = NULL, simple = TRUE, n = 1)
+```
+
+#### Arguments
+
+param | details
+------|--------
+teams | which teams colours are required
+simple | return a single colour per team
+n | return more than a single colour (max of 3)
+
+#### Example use
+
+For most plots all that is needed is a single colour, these can be returned by simply calling the function and leaving the defaults as they are, which returns a named vector:
+
+```{r}
+team_pal()
+```
+
+If only a few teams are required, then enter the team names as a vector, and a named vector will be returned.
+
+```{r}
+team_pal(teams = c("Arsenal", "Man City", "Chelsea", "Man Utd"))
+```
+
+If more than one colour for a team is required, then enter a single team name and alter the `n` argument
+
+```{r}
+team_pal(team = "Arsenal", n = 3)
+```

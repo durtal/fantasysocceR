@@ -10,7 +10,7 @@
 
 
 
-<title>gameweeks</title>
+<title>team_pal</title>
 
 <script src="libs/jquery-1.11.0/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -133,7 +133,6 @@ img {
                     <ul class="dropdown-menu">
                         <li><a href="players.html">players</a></li>
                         <li><a href="pastseasons.html">pastseasons</a></li>
-                        <li><a href="gameweeks.html">gameweeks</a></li>
                         <li><a href="season201415.html">season201415</a></li>
                     </ul>
                 </li>
@@ -148,6 +147,7 @@ img {
                         <li><a href="players_df.html">players_df</a></li>
                         <li><a href="pastseasons_df.html">pastseasons_df</a></li>
                         <li><a href="currentseason_df.html">currentseason_df</a></li>
+                        <li><a href="team_pal.html">team_pal</a></li>
                     </ul>
                 </li>
             </ul>
@@ -156,21 +156,64 @@ img {
 </nav>
 
 <div id="header">
-<h1 class="title">gameweeks</h1>
+<h1 class="title">team_pal</h1>
 </div>
 
 
-<p>The <strong>gameweeks</strong> dataset contains data for each of the gameweeks in the <a href="http://fantasy.premierleague.com">fantasy.premierleague.com</a> game. It is likely that gameweeks change as fixtures are cancelled and moved.</p>
-<p>Once the package has been loaded, to access the dataset:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(gameweeks)</code></pre>
-<p>The dataframe has dimensions 760 rows and 5 columns.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(gameweeks)</code></pre>
-<pre><code>## &#39;data.frame&#39;:    760 obs. of  5 variables:
-##  $ team: chr  &quot;Arsenal&quot; &quot;Arsenal&quot; &quot;Arsenal&quot; &quot;Arsenal&quot; ...
-##  $ date: chr  &quot;16 Aug 17:30&quot; &quot;23 Aug 17:30&quot; &quot;31 Aug 16:00&quot; &quot;13 Sep 12:45&quot; ...
-##  $ gw  : num  1 2 3 4 5 6 7 8 9 10 ...
-##  $ opp : chr  &quot;Crystal Palace&quot; &quot;Everton&quot; &quot;Leicester&quot; &quot;Man City&quot; ...
-##  $ home: logi  TRUE FALSE FALSE TRUE FALSE TRUE ...</code></pre>
+<div id="description" class="section level4">
+<h4>Description</h4>
+<p>The <code>team_pal</code> function provides a simple palette for the teams in the 2014/15 Premiership season.</p>
+</div>
+<div id="usage" class="section level4">
+<h4>Usage</h4>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">team_pal</span>(<span class="dt">teams =</span> <span class="ot">NULL</span>, <span class="dt">simple =</span> <span class="ot">TRUE</span>, <span class="dt">n =</span> <span class="dv">1</span>)</code></pre>
+</div>
+<div id="arguments" class="section level4">
+<h4>Arguments</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left">param</th>
+<th align="left">details</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">teams</td>
+<td align="left">which teams colours are required</td>
+</tr>
+<tr class="even">
+<td align="left">simple</td>
+<td align="left">return a single colour per team</td>
+</tr>
+<tr class="odd">
+<td align="left">n</td>
+<td align="left">return more than a single colour (max of 3)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="example-use" class="section level4">
+<h4>Example use</h4>
+<p>For most plots all that is needed is a single colour, these can be returned by simply calling the function and leaving the defaults as they are, which returns a named vector:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">team_pal</span>()</code></pre>
+<pre><code>##        Arsenal    Aston Villa        Burnley        Chelsea Crystal Palace 
+##      &quot;#EF0107&quot;      &quot;#7A003C&quot;      &quot;#53162F&quot;      &quot;#034694&quot;      &quot;#1B458F&quot; 
+##        Everton           Hull      Leicester      Liverpool       Man City 
+##      &quot;#274488&quot;      &quot;#F5A12D&quot;      &quot;#0053A0&quot;      &quot;#D00027&quot;      &quot;#5DBFEB&quot; 
+##        Man Utd      Newcastle            QPR    Southampton          Spurs 
+##      &quot;#DA020E&quot;      &quot;#231F20&quot;      &quot;#005CAB&quot;      &quot;#ED1A3B&quot;      &quot;#001C58&quot; 
+##          Stoke     Sunderland        Swansea      West Brom       West Ham 
+##      &quot;#E03A3E&quot;      &quot;#EB172B&quot;      &quot;#000000&quot;      &quot;#091453&quot;      &quot;#60223B&quot;</code></pre>
+<p>If only a few teams are required, then enter the team names as a vector, and a named vector will be returned.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">team_pal</span>(<span class="dt">teams =</span> <span class="kw">c</span>(<span class="st">&quot;Arsenal&quot;</span>, <span class="st">&quot;Man City&quot;</span>, <span class="st">&quot;Chelsea&quot;</span>, <span class="st">&quot;Man Utd&quot;</span>))</code></pre>
+<pre><code>##   Arsenal  Man City   Chelsea   Man Utd 
+## &quot;#EF0107&quot; &quot;#5DBFEB&quot; &quot;#034694&quot; &quot;#DA020E&quot;</code></pre>
+<p>If more than one colour for a team is required, then enter a single team name and alter the <code>n</code> argument</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">team_pal</span>(<span class="dt">team =</span> <span class="st">&quot;Arsenal&quot;</span>, <span class="dt">n =</span> <span class="dv">3</span>)</code></pre>
+<pre><code>## $Arsenal
+## [1] &quot;#EF0107&quot; &quot;#023474&quot; &quot;#9C824A&quot;</code></pre>
+</div>
 
 
 </div>
