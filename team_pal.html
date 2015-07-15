@@ -131,8 +131,12 @@ img {
                         Datasets <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
+                        <li class="dropdown-header">Current Data</li>
                         <li><a href="players.html">players</a></li>
                         <li><a href="pastseasons.html">pastseasons</a></li>
+                        <li class="dropdown-header">Old Data</li>
+                        <li><a href="players201415.html">players201415</a></li>
+                        <li><a href="pastseasons201415.html">pastseasons201415</a></li>
                         <li><a href="season201415.html">season201415</a></li>
                     </ul>
                 </li>
@@ -197,14 +201,16 @@ img {
 <h4>Example use</h4>
 <p>For most plots all that is needed is a single colour, these can be returned by simply calling the function and leaving the defaults as they are, which returns a named vector:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">team_pal</span>()</code></pre>
-<pre><code>##        Arsenal    Aston Villa        Burnley        Chelsea Crystal Palace 
-##      &quot;#EF0107&quot;      &quot;#7A003C&quot;      &quot;#53162F&quot;      &quot;#034694&quot;      &quot;#1B458F&quot; 
-##        Everton           Hull      Leicester      Liverpool       Man City 
-##      &quot;#274488&quot;      &quot;#F5A12D&quot;      &quot;#0053A0&quot;      &quot;#D00027&quot;      &quot;#5DBFEB&quot; 
-##        Man Utd      Newcastle            QPR    Southampton          Spurs 
-##      &quot;#DA020E&quot;      &quot;#231F20&quot;      &quot;#005CAB&quot;      &quot;#ED1A3B&quot;      &quot;#001C58&quot; 
-##          Stoke     Sunderland        Swansea      West Brom       West Ham 
-##      &quot;#E03A3E&quot;      &quot;#EB172B&quot;      &quot;#000000&quot;      &quot;#091453&quot;      &quot;#60223B&quot;</code></pre>
+<pre><code>##        Arsenal    Aston Villa    Bournemouth        Burnley        Chelsea 
+##      &quot;#EF0107&quot;      &quot;#7A003C&quot;      &quot;#EB172B&quot;      &quot;#53162F&quot;      &quot;#034694&quot; 
+## Crystal Palace        Everton           Hull      Leicester      Liverpool 
+##      &quot;#1B458F&quot;      &quot;#274488&quot;      &quot;#F5A12D&quot;      &quot;#0053A0&quot;      &quot;#D00027&quot; 
+##       Man City        Man Utd      Newcastle        Norwich            QPR 
+##      &quot;#5DBFEB&quot;      &quot;#DA020E&quot;      &quot;#231F20&quot;      &quot;#F1F100&quot;      &quot;#005CAB&quot; 
+##    Southampton          Spurs          Stoke     Sunderland        Swansea 
+##      &quot;#ED1A3B&quot;      &quot;#001C58&quot;      &quot;#E03A3E&quot;      &quot;#EB172B&quot;      &quot;#000000&quot; 
+##        Watford      West Brom       West Ham 
+##      &quot;#EAEA0C&quot;      &quot;#091453&quot;      &quot;#60223B&quot;</code></pre>
 <p>If only a few teams are required, then enter the team names as a vector, and a named vector will be returned.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">team_pal</span>(<span class="dt">teams =</span> <span class="kw">c</span>(<span class="st">&quot;Arsenal&quot;</span>, <span class="st">&quot;Man City&quot;</span>, <span class="st">&quot;Chelsea&quot;</span>, <span class="st">&quot;Man Utd&quot;</span>))</code></pre>
 <pre><code>##   Arsenal  Man City   Chelsea   Man Utd 

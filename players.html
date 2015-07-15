@@ -131,8 +131,12 @@ img {
                         Datasets <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
+                        <li class="dropdown-header">Current Data</li>
                         <li><a href="players.html">players</a></li>
                         <li><a href="pastseasons.html">pastseasons</a></li>
+                        <li class="dropdown-header">Old Data</li>
+                        <li><a href="players201415.html">players201415</a></li>
+                        <li><a href="pastseasons201415.html">pastseasons201415</a></li>
                         <li><a href="season201415.html">season201415</a></li>
                     </ul>
                 </li>
@@ -163,16 +167,16 @@ img {
 <p>The <strong>players</strong> dataset contains summary data for individual players in the <a href="http://fantasy.premierleague.com">fantasy.premierleague.com</a> game, the dataset was updated the day before the 2014/15 seasons started so there will be some changes due to players joining and leaving the game.</p>
 <p>Once the package has been loaded, to access the dataset:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(players)</code></pre>
-<p>The dataframe has dimensions 711 rows and 7 columns.</p>
+<p>The dataframe has dimensions 502 rows and 7 columns.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(players)</code></pre>
-<pre><code>## &#39;data.frame&#39;:    711 obs. of  7 variables:
+<pre><code>## &#39;data.frame&#39;:    502 obs. of  7 variables:
 ##  $ id   : num  1 2 3 4 5 6 7 8 9 10 ...
-##  $ name : chr  &quot;Szczesny&quot; &quot;Koscielny&quot; &quot;Vermaelen&quot; &quot;Gibbs&quot; ...
-##  $ pos  : chr  &quot;Goalkeeper&quot; &quot;Defender&quot; &quot;Defender&quot; &quot;Defender&quot; ...
+##  $ name : chr  &quot;Szczesny&quot; &quot;Ospina&quot; &quot;Cech&quot; &quot;Koscielny&quot; ...
+##  $ pos  : chr  &quot;Goalkeeper&quot; &quot;Goalkeeper&quot; &quot;Goalkeeper&quot; &quot;Defender&quot; ...
 ##  $ team : chr  &quot;Arsenal&quot; &quot;Arsenal&quot; &quot;Arsenal&quot; &quot;Arsenal&quot; ...
-##  $ pts  : num  47 120 0 76 94 121 92 0 77 36 ...
-##  $ value: num  5.2 6.1 5 5.2 5 6.1 4.9 4.3 4.8 6.3 ...
-##  $ pct  : num  4.7 9.9 0.1 1.7 0.8 5.2 3.5 0.1 6.9 2.3 ...</code></pre>
+##  $ pts  : num  47 76 38 120 121 16 77 76 23 94 ...
+##  $ value: num  5 5 5.5 6 5.5 5 5.5 5.5 5.5 5 ...
+##  $ pct  : num  0.2 0.8 28.6 19.8 11.8 0.3 7.1 0.8 0.9 1.7 ...</code></pre>
 <p>There are 7 variables, the players position (‘pos’), their team, points scored last season (‘pts’), id number, name, value (when the package was created), and the percentage of teams the player is selected in (‘pct’)</p>
 <p>A simple plot of this data to show the number of players in each position at each of the 20 clubs. We can also use the <code>team_pal()</code> function included in the package.</p>
 <pre class="sourceCode r"><code class="sourceCode r">players$pos &lt;-<span class="st"> </span><span class="kw">factor</span>(players$pos, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;Goalkeeper&quot;</span>, <span class="st">&quot;Defender&quot;</span>, 

@@ -14,9 +14,14 @@ devtools::install_github(repo = "fantasysocceR", user = "durtal")
 ### Datasets
 There are 3 stable datasets that come with the package, these datasets were updated after the 2014/15 Premier League season was completed.  The datasets are:
 
+* [**players201415**](players201415.html)
+* [**pastseasons201415**](pastseasons201415.html)
+* [**season201415**](season201415.html)
+
+There are also 2 datasets with data, collected on July 15, 2015, with data about the 2015/16 season, these are:
+
 * [**players**](players.html)
 * [**pastseasons**](pastseasons.html)
-* [**season201415**](season201415.html)
 
 ### Functions
 

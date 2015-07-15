@@ -2,7 +2,7 @@
 title: "team_pal"
 ---
 
-```{r echo=FALSE}
+```{r echo=FALSE, warning=FALSE, message=FALSE}
 library(fantasysocceR)
 ```
 

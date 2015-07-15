@@ -10,7 +10,7 @@
 
 
 
-<title>currentseason_df</title>
+<title>players201415</title>
 
 <script src="libs/jquery-1.11.0/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -160,47 +160,33 @@ img {
 </nav>
 
 <div id="header">
-<h1 class="title">currentseason_df</h1>
+<h1 class="title">players201415</h1>
 </div>
 
 
-<div id="description" class="section level4">
-<h4>Description</h4>
-<p>The <code>currentseason_df</code> function converts the data found in the list returned by the <a href="collect_ff.html">collect_ff</a> function when getting fresh data. The function returns a dataframe with the performances per gameweek for the players returned in the list.</p>
-</div>
-<div id="usage" class="section level4">
-<h4>Usage</h4>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">currentseason_df</span>(player_list, <span class="dt">add_vars =</span> <span class="ot">NULL</span>)</code></pre>
-</div>
-<div id="arguments" class="section level4">
-<h4>Arguments</h4>
-<table>
-<thead>
-<tr class="header">
-<th align="left">param</th>
-<th align="left">details</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">player_list</td>
-<td align="left">the list of players returned by <a href="collect_ff.html">collect_ff</a></td>
-</tr>
-<tr class="even">
-<td align="left">add_vars</td>
-<td align="left">extra variables to add if desired</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="example-use" class="section level4">
-<h4>Example use</h4>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># convert list into dataframe</span>
-new_players_df &lt;-<span class="st"> </span><span class="kw">currentseason_df</span>(<span class="dt">player_list =</span> player_list)
-
-<span class="co"># convert list into dataframe and add a couple of variables, points per game</span>
-new_players_df &lt;-<span class="st"> </span><span class="kw">currentseason_df</span>(<span class="dt">player_list =</span> player_list, <span class="dt">add_vars =</span> <span class="kw">c</span>(<span class="st">&quot;points_per_game&quot;</span>))</code></pre>
-</div>
+<p>The <strong>players201415</strong> dataset contains summary data for individual players in the <a href="http://fantasy.premierleague.com">fantasy.premierleague.com</a> game, the dataset was updated the day after the 2014/15 seasons started so player values reflect final values. To see player values at the start of the season, then this can be seen in the <a href="season201415.html"><strong>season201415</strong></a> dataset, which contains weekly data for all players in the game.</p>
+<p>Once the package has been loaded, to access the dataset:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(players201415)</code></pre>
+<p>The dataframe has dimensions 711 rows and 7 columns.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(players201415)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    711 obs. of  7 variables:
+##  $ id   : num  1 2 3 4 5 6 7 8 9 10 ...
+##  $ name : chr  &quot;Szczesny&quot; &quot;Koscielny&quot; &quot;Vermaelen&quot; &quot;Gibbs&quot; ...
+##  $ pos  : chr  &quot;Goalkeeper&quot; &quot;Defender&quot; &quot;Defender&quot; &quot;Defender&quot; ...
+##  $ team : chr  &quot;Arsenal&quot; &quot;Arsenal&quot; &quot;Arsenal&quot; &quot;Arsenal&quot; ...
+##  $ pts  : num  47 120 0 76 94 121 92 0 77 36 ...
+##  $ value: num  5.2 6.1 5 5.2 5 6.1 4.9 4.3 4.8 6.3 ...
+##  $ pct  : num  4.7 9.9 0.1 1.7 0.8 5.2 3.5 0.1 6.9 2.3 ...</code></pre>
+<p>There are 7 variables, the players position (‘pos’), their team, points scored last season (‘pts’), id number, name, value (when the package was created), and the percentage of teams the player is selected in (‘pct’)</p>
+<p>A simple plot of this data to show the number of players in each position at each of the 20 clubs. We can also use the <code>team_pal()</code> function included in the package.</p>
+<pre class="sourceCode r"><code class="sourceCode r">players201415$pos &lt;-<span class="st"> </span><span class="kw">factor</span>(players201415$pos, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;Goalkeeper&quot;</span>, <span class="st">&quot;Defender&quot;</span>,
+                                                          <span class="st">&quot;Midfielder&quot;</span>, <span class="st">&quot;Forward&quot;</span>))
+<span class="kw">ggplot</span>(players201415, <span class="kw">aes</span>(<span class="dt">x=</span>pos, <span class="dt">fill=</span>team)) +
+<span class="st">    </span><span class="kw">geom_bar</span>() +
+<span class="st">    </span><span class="kw">theme_bw</span>() +
+<span class="st">    </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> <span class="kw">team_pal</span>()) +
+<span class="st">    </span><span class="kw">facet_wrap</span>(~team)</code></pre>
+<p><img src="players201415_files/figure-html/unnamed-chunk-4-1.png" title="" alt="" width="960" style="display: block; margin: auto;" /></p>
 
 
 </div>
