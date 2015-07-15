@@ -6,6 +6,7 @@
 epl_palettes <- list(
     "Arsenal" = c("#EF0107", "#023474", "#9C824A"),
     "Aston Villa" = c("#7A003C", "#94BEE5", "#FFE600"),
+    "Bournemouth" = c("#EB172B", "#231F20", "#0053A0"),
     "Burnley" = c("#53162F", "#8CCCE5", "#F9EC34"),
     "Chelsea" = c("#034694", "#DBA111", "#ED1C24"),
     "Crystal Palace" = c("#1B458F", "#C4122E", "#A7A5A6"),
@@ -16,12 +17,14 @@ epl_palettes <- list(
     "Man City" = c("#5DBFEB", "#FFCE65", "#FFE600"),
     "Man Utd" = c("#DA020E", "#FFE500", "#000000"),
     "Newcastle" = c("#231F20", "#00B6F1", "#BBBDBF"),
+    "Norwich" = c("#F1F100", "#19C410", "#000000"),
     "QPR" = c("#005CAB", "#D00027", "#FFFFFF"),
     "Southampton" = c("#ED1A3B", "#211E1F", "#FFC20E"),
     "Spurs" = c("#001C58", "#FFFFFF", "#000000"),
     "Stoke" = c("#E03A3E", "#1B449C", "#94BEE5"),
     "Sunderland" = c("#EB172B", "#A68A26", "#211E1E"),
     "Swansea" = c("#000000", "#DA020E", "#FFFFFF"),
+    "Watford" = c("#EAEA0C", "#231F20", "#D00027"),
     "West Brom" = c("#091453", "#FFFFFF", "#EB172B"),
     "West Ham" = c("#60223B", "#F7C240", "#5299C6")
 )

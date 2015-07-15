@@ -4,9 +4,10 @@
 \name{epl_palettes}
 \alias{epl_palettes}
 \title{List of Premiership team palettes}
-\format{\preformatted{List of 20
+\format{\preformatted{List of 23
  $ Arsenal       : chr [1:3] "#EF0107" "#023474" "#9C824A"
  $ Aston Villa   : chr [1:3] "#7A003C" "#94BEE5" "#FFE600"
+ $ Bournemouth   : chr [1:3] "#EB172B" "#231F20" "#0053A0"
  $ Burnley       : chr [1:3] "#53162F" "#8CCCE5" "#F9EC34"
  $ Chelsea       : chr [1:3] "#034694" "#DBA111" "#ED1C24"
  $ Crystal Palace: chr [1:3] "#1B458F" "#C4122E" "#A7A5A6"
@@ -17,12 +18,14 @@
  $ Man City      : chr [1:3] "#5DBFEB" "#FFCE65" "#FFE600"
  $ Man Utd       : chr [1:3] "#DA020E" "#FFE500" "#000000"
  $ Newcastle     : chr [1:3] "#231F20" "#00B6F1" "#BBBDBF"
+ $ Norwich       : chr [1:3] "#F1F100" "#19C410" "#000000"
  $ QPR           : chr [1:3] "#005CAB" "#D00027" "#FFFFFF"
  $ Southampton   : chr [1:3] "#ED1A3B" "#211E1F" "#FFC20E"
  $ Spurs         : chr [1:3] "#001C58" "#FFFFFF" "#000000"
  $ Stoke         : chr [1:3] "#E03A3E" "#1B449C" "#94BEE5"
  $ Sunderland    : chr [1:3] "#EB172B" "#A68A26" "#211E1E"
  $ Swansea       : chr [1:3] "#000000" "#DA020E" "#FFFFFF"
+ $ Watford       : chr [1:3] "#EAEA0C" "#231F20" "#D00027"
  $ West Brom     : chr [1:3] "#091453" "#FFFFFF" "#EB172B"
  $ West Ham      : chr [1:3] "#60223B" "#F7C240" "#5299C6"
 }}
