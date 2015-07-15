@@ -1,4 +1,4 @@
-fantasysocceR (1.0.0)
+fantasysocceR (1.1.0)
 =============
 
 R package with datasets and functions for the fantasy football game [fantasy.premierleague.com](http://fantasy.premierleague.com/).
@@ -16,6 +16,8 @@ Name | Contents
 -----|--------
 players| summary data for current players
 pastseasons| data from previous seasons
+players201415 | summary data for players in 2014/15 season
+pastseasons201415 | data for previous season from 2014/15 season
 season201415 | performance data for players across the 2014/15 season
 
 Load data as normal
