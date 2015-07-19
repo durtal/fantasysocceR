@@ -2,6 +2,9 @@
 #' 
 #' Use \code{\link{team_pal}} to construct palettes
 #' 
+#' @description each team, 23 total teams, from seasons 2014/15 and 2015/16 has
+#' three colours
+#' 
 #' @export
 epl_palettes <- list(
     "Arsenal" = c("#EF0107", "#023474", "#9C824A"),

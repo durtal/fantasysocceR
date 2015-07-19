@@ -33,6 +33,10 @@
 epl_palettes
 }
 \description{
+each team, 23 total teams, from seasons 2014/15 and 2015/16 has
+three colours
+}
+\details{
 Use \code{\link{team_pal}} to construct palettes
 }
 \keyword{datasets}
