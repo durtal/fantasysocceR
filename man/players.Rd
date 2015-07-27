@@ -4,11 +4,11 @@
 \name{players}
 \alias{players}
 \title{Players dataset}
-\format{502 rows, 7 columns}
+\format{521 rows, 7 columns}
 \description{
 Summary data about the current players in the game, some
 variables in this dataset will almost immediately be out of date (such as
-\emph{pct}), data collected Jul 15, 2015.
+\emph{pct}), data collected Jul 27, 2015.
 See \link{collect_ff} for getting up-to-date data.
 }
 \details{
