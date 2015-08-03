@@ -27,13 +27,13 @@ NULL
 #' 
 #' @description Summary data about the current players in the game, some 
 #' variables in this dataset will almost immediately be out of date (such as 
-#' \emph{pct}), data collected Jul 27, 2015.
+#' \emph{pct}), data collected Aug 02, 2015.
 #' See \link{collect_ff} for getting up-to-date data.
 #' 
 #' @docType data
 #' @keywords datasets
 #' @name players
-#' @format 521 rows, 7 columns
+#' @format 532 rows, 7 columns
 #' @details Variables
 #' \itemize{
 #'      \item \strong{pos} player pos
@@ -61,7 +61,7 @@ NULL
 #' @docType data
 #' @keywords datasets
 #' @name pastseasons
-#' @format 1869 rows, 24 columns
+#' @format 1920 rows, 24 columns
 #' @details Variables
 #' \itemize{
 #'      \item \strong{pos} player pos
