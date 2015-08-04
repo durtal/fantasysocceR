@@ -167,16 +167,16 @@ img {
 <p>The <strong>pastseasons</strong> dataset contains performance data for past seasons for all current players in the <a href="http://fantasy.premierleague.com">fantasy.premierleague.com</a> game. Not all players in the game have past data, those who are making their debut in the game, these players are still included in the dataset but their performance data is recorded as NA</p>
 <p>Once the package has been loaded, to access the dataset:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(pastseasons)</code></pre>
-<p>The dataframe has dimensions 1869 rows and 24 columns.</p>
+<p>The dataframe has dimensions 1920 rows and 24 columns.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(pastseasons)</code></pre>
-<pre><code>## &#39;data.frame&#39;:    1869 obs. of  24 variables:
+<pre><code>## &#39;data.frame&#39;:    1920 obs. of  24 variables:
 ##  $ id      : num  1 1 1 1 1 1 1 2 3 3 ...
 ##  $ name    : chr  &quot;Szczesny&quot; &quot;Szczesny&quot; &quot;Szczesny&quot; &quot;Szczesny&quot; ...
 ##  $ pos     : chr  &quot;Goalkeeper&quot; &quot;Goalkeeper&quot; &quot;Goalkeeper&quot; &quot;Goalkeeper&quot; ...
 ##  $ team    : chr  &quot;Arsenal&quot; &quot;Arsenal&quot; &quot;Arsenal&quot; &quot;Arsenal&quot; ...
 ##  $ pts     : num  47 47 47 47 47 47 47 76 38 38 ...
 ##  $ value   : num  5 5 5 5 5 5 5 5 5.5 5.5 ...
-##  $ pct     : num  0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.8 28.6 28.6 ...
+##  $ pct     : num  0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.7 30.2 30.2 ...
 ##  $ season  : chr  &quot;2008/09&quot; &quot;2009/10&quot; &quot;2010/11&quot; &quot;2011/12&quot; ...
 ##  $ mins    : num  0 0 1350 3420 2250 ...
 ##  $ goals   : num  0 0 0 0 0 0 0 0 0 0 ...
@@ -199,18 +199,18 @@ img {
 <pre class="sourceCode r"><code class="sourceCode r">tmp &lt;-<span class="st"> </span><span class="kw">subset</span>(pastseasons, season ==<span class="st"> &quot;2010/11&quot;</span> |<span class="st"> </span>season ==<span class="st"> &quot;2011/12&quot;</span> |<span class="st"> </span>season ==<span class="st"> &quot;2012/13&quot;</span> |<span class="st"> </span>season ==<span class="st"> &quot;2013/14&quot;</span> |<span class="st"> </span>season ==<span class="st"> &quot;2014/15&quot;</span>,
               <span class="dt">select =</span> <span class="kw">c</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;id&quot;</span>, <span class="st">&quot;pos&quot;</span>, <span class="st">&quot;team&quot;</span>, <span class="st">&quot;pct&quot;</span>, <span class="st">&quot;value&quot;</span>, <span class="st">&quot;season&quot;</span>, <span class="st">&quot;fin_val&quot;</span>, <span class="st">&quot;ssn_pts&quot;</span>))
 <span class="kw">dim</span>(tmp)</code></pre>
-<pre><code>## [1] 1367    9</code></pre>
+<pre><code>## [1] 1392    9</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># we need the reshape2 package, to create a &#39;long&#39; dataframe, with one player per row</span>
 <span class="kw">library</span>(reshape2)
 ssn2ssn &lt;-<span class="st"> </span><span class="kw">dcast</span>(tmp, name +<span class="st"> </span>id +<span class="st"> </span>pos +<span class="st"> </span>team +<span class="st"> </span>pct +<span class="st"> </span>value ~<span class="st"> </span>season, <span class="dt">value.var =</span> <span class="st">&quot;ssn_pts&quot;</span>)
 <span class="kw">head</span>(ssn2ssn)</code></pre>
 <pre><code>##          name id        pos    team  pct value 2010/11 2011/12 2012/13
-## 1    Szczesny  1 Goalkeeper Arsenal  0.2   5.0      62     139     102
-## 2      Ospina  2 Goalkeeper Arsenal  0.8   5.0      NA      NA      NA
-## 3        Cech  3 Goalkeeper Arsenal 28.6   5.5     158     127     144
-## 4   Koscielny  4   Defender Arsenal 19.8   6.0      85     103      88
-## 5 Mertesacker  5   Defender Arsenal 11.8   5.5      NA      59     135
-## 6     Gabriel  6   Defender Arsenal  0.3   5.0      NA      NA      NA
+## 1    Szczesny  1 Goalkeeper Arsenal  0.1   5.0      62     139     102
+## 2      Ospina  2 Goalkeeper Arsenal  0.7   5.0      NA      NA      NA
+## 3        Cech  3 Goalkeeper Arsenal 30.2   5.5     158     127     144
+## 4   Koscielny  4   Defender Arsenal 17.8   6.0      85     103      88
+## 5 Mertesacker  5   Defender Arsenal 15.2   5.5      NA      59     135
+## 6     Gabriel  6   Defender Arsenal  0.2   5.0      NA      NA      NA
 ##   2013/14 2014/15
 ## 1     157      47
 ## 2      NA      76
