@@ -11,8 +11,9 @@ Description: Datasets for players and teams in the fantasy football (soccer)
     to update datasets regularly, but functions are available to help collect
     up-to-date data in the same/similar format to the existing datasets.
 License: GPL-2
-Imports:
+Imports: 
     plyr,
     rjson,
     RCurl,
     stringr
+Suggests: testthat
