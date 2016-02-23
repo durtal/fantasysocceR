@@ -8,7 +8,7 @@ Here is a short blog post [introducing the package](http://durtal.github.io/blog
 #### Installation
 Within R
 ```R
-devtools::install_github("fantasysocceR", "durtal")
+devtools::install_github("durtal/fantasysocceR")
 ```
 
 #### Datasets
