@@ -31,7 +31,7 @@ collect_ff <- function(n = 600, specify_ids = NULL, .progress = "none") {
     }
     
     player_list <- plyr::llply(ids, function(x) {
-        Sys.sleep(1)
+        Sys.sleep(0.2)
         new_url <- sprintf("http://fantasy.premierleague.com/web/api/elements/%s/?format=json", x)
         if(RCurl::url.exists(new_url)) {
             tmp <- rjson::fromJSON(file = new_url)

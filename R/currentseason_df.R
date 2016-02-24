@@ -1,9 +1,9 @@
 #' Construct current season dataframe from fresh fantasy data
-#' 
-#' @description Converts the list returned by \link{collect_df} into a dataframe
+#'
+#' @description Converts the list returned by \link{collect_ff} into a dataframe
 #' with performances per gameweek for all current players in the game.
-#' 
-#' @details This function calls the \link{players_helper} function to provide 
+#'
+#' @details This function calls the \link{players_helper} function to provide
 #' summary data for the current season.  The dataframe returned consists of:
 #' \itemize{
 #'      \item \strong{pos} player pos
@@ -31,10 +31,10 @@
 #'      \item \strong{ea_ppi} EA sports player performance index
 #'      \item \strong{bps} bonus points system
 #'      \item \strong{gw_val} gameweek value
-#'      \item \strong{gw_pts} gameweek points 
+#'      \item \strong{gw_pts} gameweek points
 #' }
-#' 
-#' @param player_list list of players (the list returned by 
+#'
+#' @param player_list list of players (the list returned by
 #' \link{collect_ff})
 #' @param add_vars extra variables to add if desired, see details of
 #' \link{players_df} for available extra variables
@@ -46,14 +46,13 @@
 #' players <- currentseason_df(player_list)
 #' }
 currentseason_df <- function(player_list, add_vars = NULL) {
-    
+
     tmp <- plyr::ldply(player_list, function(x) {
         p_df <- players_helper(x, add_vars = add_vars)
         c_df <- currentseason_helper(x)
         compdf <- cbind(p_df, c_df)
         compdf
     })
-    
+
     return(tmp)
 }
-
