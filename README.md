@@ -6,7 +6,7 @@ R package with datasets and functions for the fantasy football game [fantasy.pre
 Here is a short blog post [introducing the package](http://durtal.github.io/blog/r-package-fantasysocceR.html).  Help pages can be found [here](http://durtal.github.io/fantasysocceR/)
 
 #### Installation
-Within R
+
 ```R
 devtools::install_github("durtal/fantasysocceR")
 ```
